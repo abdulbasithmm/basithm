@@ -185,28 +185,16 @@ export const WorkSection: React.FC<WorkSectionProps> = ({ onOpenWorkModal }) => 
             );
           })}
         </div>
-
-        {/* Mouse Guidance Subtle Tip */}
-        <div className="mt-4 text-center">
-          <span className="text-[11px] font-mono text-[#64748B] tracking-wider uppercase inline-flex items-center gap-1.5">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#8B5CF6] animate-ping" />
-            Hover & Move Mouse to Slide Curve Arc
-          </span>
-        </div>
       </div>
 
-      {/* Bottom Trust Text & Logo Strip matching image exact layout */}
+      {/* Bottom Logo Strip */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.7, delay: 0.2 }}
-        className="pt-10 border-t border-[#282a33] text-center"
+        className="pt-4 text-center"
       >
-        <p className="text-xs sm:text-sm text-[#94A3B8] font-medium tracking-wide mb-8">
-          Have Protected 100+ Businesses from Cyber Threats and Data Breaches
-        </p>
-
         {/* 5 Logoipsum Badges */}
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6 items-center justify-center max-w-4xl mx-auto opacity-75 hover:opacity-100 transition-opacity">
           {[
