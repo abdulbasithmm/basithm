@@ -1,6 +1,16 @@
-import React from 'react';
-import { motion } from 'motion/react';
-import { ArrowUpRight, Cpu, Layers, ShieldCheck, Sparkles, Star, Zap, Globe, Circle, Box } from 'lucide-react';
+import React, { useState, useRef } from 'react';
+import { motion, useMotionValue, useSpring, useTransform, MotionValue } from 'motion/react';
+import {
+  ArrowUpRight,
+  Cpu,
+  ShieldCheck,
+  Sparkles,
+  Globe,
+  Circle,
+  Box,
+  ChevronLeft,
+  ChevronRight,
+} from 'lucide-react';
 import { basithProjects } from '../data';
 
 interface WorkSectionProps {
@@ -8,59 +18,95 @@ interface WorkSectionProps {
 }
 
 export const WorkSection: React.FC<WorkSectionProps> = ({ onOpenWorkModal }) => {
-  // We select 4 distinct projects for the fanned card display matching the image cards
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // Mouse position state normalized between -1 and 1
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  // Smooth springs for fluid, physics-based movement
+  const springX = useSpring(mouseX, { stiffness: 120, damping: 20 });
+  const springY = useSpring(mouseY, { stiffness: 120, damping: 20 });
+
+  // Active highlighted card index for click/swipe
+  const [activeIndex, setActiveIndex] = useState(1);
+
+  // Handle Mouse movement across the card stage
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!containerRef.current) return;
+    const rect = containerRef.current.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 2 - 1; // -1 to 1
+    const y = ((e.clientY - rect.top) / rect.height) * 2 - 1; // -1 to 1
+    mouseX.set(x);
+    mouseY.set(y);
+  };
+
+  const handleMouseLeave = () => {
+    mouseX.set(0);
+    mouseY.set(0);
+  };
+
+  // 4 main projects matching the 4 cards in the image
   const displayProjects = basithProjects.slice(0, 4);
 
-  // Card specific artwork themes inspired by the image
-  const cardArtworks = [
+  // Card specific visual styling mimicking the credit cards in the image
+  const cardDesigns = [
     {
-      // Card 1: Geometric Mesh & Glowing Sphere
+      id: 0,
       bg: 'bg-gradient-to-br from-[#12131a] via-[#1a1b26] to-[#0a0b10]',
-      pattern: 'bg-[radial-gradient(#2e3245_1px,transparent_1px)] [background-size:12px_12px]',
+      pattern: 'bg-[radial-gradient(#3a3e52_1px,transparent_1px)] [background-size:10px_10px]',
       accentOrb: 'bg-gradient-to-tr from-[#ec4899] to-[#8b5cf6]',
-      accentStyle: 'top-6 right-6 w-12 h-12 rounded-full blur-xs opacity-90 shadow-[0_0_20px_rgba(236,72,153,0.5)]',
-      rotation: '-rotate-[14deg]',
-      translateY: 'translate-y-8 sm:translate-y-10',
-      zIndex: 'z-10',
+      accentStyle: 'top-6 right-6 w-14 h-14 rounded-full blur-xs opacity-90 shadow-[0_0_25px_rgba(236,72,153,0.5)]',
+      baseRotation: -14,
+      baseX: -160,
+      baseY: 28,
+      chipColor: 'from-[#d4af37] to-[#aa7c11]',
+      cardNum: '4920 •••• •••• 9102',
     },
     {
-      // Card 2: Liquid Wave Violet & Cyan Gradient
-      bg: 'bg-gradient-to-tr from-[#1e1b4b] via-[#312e81] to-[#0284c7]',
+      id: 1,
+      bg: 'bg-gradient-to-tr from-[#1e1b4b] via-[#2e1065] to-[#0284c7]',
       pattern: 'bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-cyan-400/20 via-purple-500/20 to-transparent',
       accentOrb: 'bg-gradient-to-r from-cyan-400 to-blue-600',
-      accentStyle: 'bottom-8 left-6 w-20 h-10 rounded-full blur-sm opacity-80',
-      rotation: '-rotate-[5deg]',
-      translateY: 'translate-y-2 sm:translate-y-3',
-      zIndex: 'z-20',
+      accentStyle: 'bottom-8 left-6 w-24 h-12 rounded-full blur-sm opacity-80',
+      baseRotation: -5,
+      baseX: -50,
+      baseY: 6,
+      chipColor: 'from-[#e2e8f0] to-[#94a3b8]',
+      cardNum: '1234 5678 9012 3456',
     },
     {
-      // Card 3: Metallic Black with 3D Spherical Orb
+      id: 2,
       bg: 'bg-gradient-to-b from-[#18181b] via-[#09090b] to-[#000000]',
       pattern: 'border border-[#27272a]',
       accentOrb: 'bg-gradient-to-br from-[#06b6d4] via-[#3b82f6] to-[#1e1b4b]',
-      accentStyle: 'bottom-10 left-1/2 -translate-x-1/2 w-16 h-16 rounded-full shadow-[0_0_30px_rgba(6,182,212,0.6)]',
-      rotation: 'rotate-[4deg]',
-      translateY: 'translate-y-2 sm:translate-y-3',
-      zIndex: 'z-30',
+      accentStyle: 'bottom-10 left-1/2 -translate-x-1/2 w-16 h-16 rounded-full shadow-[0_0_35px_rgba(6,182,212,0.7)]',
+      baseRotation: 4,
+      baseX: 50,
+      baseY: 6,
+      chipColor: 'from-[#d4af37] to-[#85581A]',
+      cardNum: '8819 •••• •••• 1049',
     },
     {
-      // Card 4: Concentric Ring Dark Card
+      id: 3,
       bg: 'bg-gradient-to-br from-[#1c1917] via-[#0c0a09] to-[#000000]',
       pattern: 'bg-[radial-gradient(circle_at_bottom_right,#ea580c_0%,transparent_60%)]',
       accentOrb: 'border-2 border-[#f97316]/50',
-      accentStyle: 'bottom-4 right-4 w-24 h-24 rounded-full opacity-60',
-      rotation: 'rotate-[14deg]',
-      translateY: 'translate-y-8 sm:translate-y-10',
-      zIndex: 'z-10',
+      accentStyle: 'bottom-4 right-4 w-28 h-28 rounded-full opacity-60',
+      baseRotation: 14,
+      baseX: 160,
+      baseY: 28,
+      chipColor: 'from-[#cbd5e1] to-[#64748b]',
+      cardNum: '6021 •••• •••• 5530',
     },
   ];
 
   return (
     <section id="work" className="relative z-10 w-full py-16 lg:py-24 px-4 sm:px-6 lg:px-8 max-w-[1280px] mx-auto border-t border-[#282a33] overflow-hidden bg-transparent select-none">
-      {/* Deep Center Ambient Spotlight */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] sm:w-[800px] h-[300px] sm:h-[400px] bg-gradient-to-b from-white/10 via-purple-500/5 to-transparent blur-[140px] rounded-full pointer-events-none -z-10" />
+      {/* Soft Ambient Background Glow */}
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] sm:w-[900px] h-[350px] bg-radial from-white/10 via-purple-500/5 to-transparent blur-[140px] rounded-full pointer-events-none -z-10" />
 
-      {/* Hero Header matching image exact typography */}
+      {/* Main Header Content matching exact typography & style */}
       <motion.div
         initial={{ opacity: 0, y: 25 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -77,7 +123,7 @@ export const WorkSection: React.FC<WorkSectionProps> = ({ onOpenWorkModal }) => 
           Take control of your time, stay focused, and set benchmark with every motion produced.
         </p>
 
-        {/* Download for Free / Explore Pill Button */}
+        {/* Download for Free Pill CTA */}
         <div className="pt-3">
           <motion.button
             whileHover={{ scale: 1.05 }}
@@ -90,70 +136,62 @@ export const WorkSection: React.FC<WorkSectionProps> = ({ onOpenWorkModal }) => 
         </div>
       </motion.div>
 
-      {/* Fanned Out Cards Container */}
-      <div className="relative w-full max-w-4xl mx-auto pt-4 pb-12 sm:pb-16 flex items-center justify-center">
-        {/* Dark Ground Shelf / Mask Effect */}
-        <div className="absolute bottom-0 inset-x-0 h-20 bg-gradient-to-t from-[#131417] to-transparent z-40 pointer-events-none" />
+      {/* Interactive Fanned-Cards Container with Curve-Slide Mouse Animation */}
+      <div
+        ref={containerRef}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        className="relative w-full max-w-5xl mx-auto pt-6 pb-14 sm:pb-20 flex flex-col items-center justify-center cursor-grab active:cursor-grabbing"
+      >
+        {/* Navigation Arrows for Mobile/Keyboard access */}
+        <div className="flex sm:hidden items-center justify-between w-full px-4 mb-4 z-30">
+          <button
+            onClick={() => setActiveIndex((prev) => (prev - 1 + 4) % 4)}
+            className="p-2 rounded-full bg-[#191b20] border border-[#2a2d37] text-white"
+          >
+            <ChevronLeft className="w-4 h-4" />
+          </button>
+          <span className="text-xs text-[#94A3B8] font-mono">
+            Project {activeIndex + 1} of 4
+          </span>
+          <button
+            onClick={() => setActiveIndex((prev) => (prev + 1) % 4)}
+            className="p-2 rounded-full bg-[#191b20] border border-[#2a2d37] text-white"
+          >
+            <ChevronRight className="w-4 h-4" />
+          </button>
+        </div>
 
-        {/* Fanned Cards Stack */}
-        <div className="relative w-full max-w-3xl h-[260px] sm:h-[320px] md:h-[350px] flex items-center justify-center px-4">
+        {/* 3D Arc Curved Slider Stage */}
+        <div className="relative w-full max-w-4xl h-[280px] sm:h-[350px] md:h-[380px] flex items-center justify-center perspective-[1200px]">
           {displayProjects.map((project, idx) => {
-            const art = cardArtworks[idx % cardArtworks.length];
+            const card = cardDesigns[idx];
+            const isSelected = activeIndex === idx;
 
             return (
-              <motion.div
+              <InteractiveCard
                 key={project.id}
-                initial={{ opacity: 0, y: 40, rotate: 0 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
-                whileHover={{
-                  scale: 1.08,
-                  rotate: 0,
-                  y: -20,
-                  zIndex: 50,
-                  transition: { duration: 0.3 },
+                idx={idx}
+                card={card}
+                project={project}
+                isSelected={isSelected}
+                springX={springX}
+                springY={springY}
+                onSelect={() => {
+                  setActiveIndex(idx);
+                  onOpenWorkModal();
                 }}
-                onClick={onOpenWorkModal}
-                className={`absolute w-[190px] sm:w-[240px] md:w-[270px] h-[240px] sm:h-[290px] md:h-[320px] rounded-2xl p-4 sm:p-5 cursor-pointer border border-white/10 shadow-[0_25px_60px_rgba(0,0,0,0.9)] flex flex-col justify-between overflow-hidden transition-all duration-300 ${art.bg} ${art.rotation} ${art.translateY} ${art.zIndex}`}
-              >
-                {/* Pattern Overlay */}
-                <div className={`absolute inset-0 pointer-events-none ${art.pattern}`} />
-
-                {/* Decorative Art Orb */}
-                <div className={`absolute pointer-events-none ${art.accentOrb} ${art.accentStyle}`} />
-
-                {/* Top Card Header: Chip & Logo */}
-                <div className="relative z-10 flex items-center justify-between w-full">
-                  <div className="w-8 h-6 sm:w-10 sm:h-7 rounded-md bg-gradient-to-tr from-[#d4af37] via-[#f3e5ab] to-[#aa7c11] p-1 flex items-center justify-center shadow-xs">
-                    <Cpu className="w-4 h-4 text-black/80" />
-                  </div>
-                  <span className="text-[10px] font-mono text-white/60 tracking-widest uppercase">
-                    {project.category}
-                  </span>
-                </div>
-
-                {/* Center Content / Artwork Title */}
-                <div className="relative z-10 my-auto text-left">
-                  <div className="text-[10px] sm:text-xs font-semibold text-white/50 uppercase tracking-widest mb-1">
-                    {project.type}
-                  </div>
-                  <h3 className="font-heading font-extrabold text-white text-sm sm:text-base md:text-lg leading-tight line-clamp-2">
-                    {project.title}
-                  </h3>
-                </div>
-
-                {/* Bottom Card Footer: Card Number style & Details */}
-                <div className="relative z-10 pt-2 border-t border-white/10 flex items-center justify-between text-[10px] sm:text-xs text-white/70 font-mono tracking-wider">
-                  <span>**** {1024 + idx * 318}</span>
-                  <span className="text-white font-sans font-bold flex items-center gap-0.5 hover:text-[#38BDF8] transition-colors">
-                    <span>View</span>
-                    <ArrowUpRight className="w-3 h-3" />
-                  </span>
-                </div>
-              </motion.div>
+              />
             );
           })}
+        </div>
+
+        {/* Mouse Guidance Subtle Tip */}
+        <div className="mt-4 text-center">
+          <span className="text-[11px] font-mono text-[#64748B] tracking-wider uppercase inline-flex items-center gap-1.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#8B5CF6] animate-ping" />
+            Hover & Move Mouse to Slide Curve Arc
+          </span>
         </div>
       </div>
 
@@ -169,7 +207,7 @@ export const WorkSection: React.FC<WorkSectionProps> = ({ onOpenWorkModal }) => 
           Have Protected 100+ Businesses from Cyber Threats and Data Breaches
         </p>
 
-        {/* 5 Logoipsum Style Badges matching image */}
+        {/* 5 Logoipsum Badges */}
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6 items-center justify-center max-w-4xl mx-auto opacity-75 hover:opacity-100 transition-opacity">
           {[
             { name: 'Logoipsum', icon: Circle },
@@ -182,7 +220,7 @@ export const WorkSection: React.FC<WorkSectionProps> = ({ onOpenWorkModal }) => 
             return (
               <div
                 key={i}
-                className="flex items-center justify-center space-x-2 text-white/80 font-bold text-sm tracking-tight py-2 px-3 hover:text-white transition-colors cursor-default"
+                className="flex items-center justify-center space-x-2 text-white/80 font-bold text-sm tracking-tight py-2 px-3 hover:text-white transition-colors cursor-pointer"
               >
                 <div className="w-5 h-5 rounded-full bg-white/10 flex items-center justify-center">
                   <IconComp className="w-3.5 h-3.5 text-white" />
@@ -197,4 +235,98 @@ export const WorkSection: React.FC<WorkSectionProps> = ({ onOpenWorkModal }) => 
   );
 };
 
+// Subcomponent for individual card with full mouse curve reactive motion
+interface InteractiveCardProps {
+  idx: number;
+  card: any;
+  project: any;
+  isSelected: boolean;
+  springX: MotionValue<number>;
+  springY: MotionValue<number>;
+  onSelect: () => void;
+}
 
+const InteractiveCard: React.FC<InteractiveCardProps> = ({
+  idx,
+  card,
+  project,
+  isSelected,
+  springX,
+  springY,
+  onSelect,
+}) => {
+  // Spread across center (-1.5, -0.5, 0.5, 1.5)
+  const curveFactor = idx - 1.5;
+
+  // Explicit type annotations inside useTransform to prevent TS arithmetic type errors
+  const dynamicX = useTransform(springX, (xVal: number) => card.baseX + xVal * 35 + curveFactor * xVal * 25);
+  const dynamicY = useTransform(springY, (yVal: number) => card.baseY + Math.abs(curveFactor) * 8 + yVal * 20);
+  const dynamicRotate = useTransform(springX, (xVal: number) => card.baseRotation + xVal * 12 + curveFactor * xVal * 4);
+  const dynamicScale = useTransform(springY, (yVal: number) => (isSelected ? 1.06 : 0.95 + yVal * 0.03));
+
+  return (
+    <motion.div
+      style={{
+        x: dynamicX,
+        y: dynamicY,
+        rotate: dynamicRotate,
+        scale: dynamicScale,
+        zIndex: isSelected ? 40 : 10 + (idx === 1 || idx === 2 ? 10 : 0),
+      }}
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6, delay: idx * 0.08 }}
+      whileHover={{
+        scale: 1.12,
+        rotate: 0,
+        y: -25,
+        zIndex: 50,
+        transition: { duration: 0.3, ease: 'easeOut' },
+      }}
+      onClick={onSelect}
+      className={`absolute w-[190px] sm:w-[240px] md:w-[270px] h-[250px] sm:h-[300px] md:h-[330px] rounded-2xl p-4 sm:p-5 cursor-pointer border shadow-[0_25px_60px_rgba(0,0,0,0.85)] flex flex-col justify-between overflow-hidden transition-colors duration-300 ${
+        card.bg
+      } ${isSelected ? 'border-[#8B5CF6] shadow-[0_0_40px_rgba(139,92,246,0.4)]' : 'border-white/10 hover:border-white/30'}`}
+    >
+      {/* Pattern Overlay */}
+      <div className={`absolute inset-0 pointer-events-none ${card.pattern}`} />
+
+      {/* Decorative Accent Orb */}
+      <div className={`absolute pointer-events-none ${card.accentOrb} ${card.accentStyle}`} />
+
+      {/* Top Header: Metallic Chip & Type */}
+      <div className="relative z-10 flex items-center justify-between w-full">
+        {/* Metallic Credit Card Chip Graphic */}
+        <div className={`w-9 h-7 rounded-md bg-gradient-to-br ${card.chipColor} p-1 flex items-center justify-center border border-white/20 shadow-xs`}>
+          <Cpu className="w-4 h-4 text-black/80" />
+        </div>
+        <span className="text-[10px] font-mono text-white/60 tracking-widest uppercase">
+          {project.category}
+        </span>
+      </div>
+
+      {/* Card Body / Case Title */}
+      <div className="relative z-10 my-auto text-left space-y-1">
+        <div className="text-[10px] sm:text-xs font-semibold text-white/50 uppercase tracking-widest">
+          {project.type}
+        </div>
+        <h3 className="font-heading font-extrabold text-white text-sm sm:text-base md:text-lg leading-tight line-clamp-2">
+          {project.title}
+        </h3>
+        <p className="text-[11px] text-white/60 line-clamp-2 font-sans pt-0.5">
+          {project.description}
+        </p>
+      </div>
+
+      {/* Card Footer: Card Number & Action Link */}
+      <div className="relative z-10 pt-2 border-t border-white/10 flex items-center justify-between text-[10px] sm:text-xs text-white/70 font-mono tracking-wider">
+        <span>{card.cardNum}</span>
+        <span className="text-white font-sans font-bold flex items-center gap-0.5 hover:text-[#38BDF8] transition-colors">
+          <span>View</span>
+          <ArrowUpRight className="w-3 h-3" />
+        </span>
+      </div>
+    </motion.div>
+  );
+};
