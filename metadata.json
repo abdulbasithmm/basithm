@@ -1,0 +1,6 @@
+{
+  "name": "Basith Frames & Agency",
+  "description": "Lumine Insights AI system with luminous planetary arc hero, smooth Lenis scrolling, and dark atmospheric aesthetic.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

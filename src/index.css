@@ -1,0 +1,198 @@
+@import "tailwindcss";
+
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@layer base {
+  :root {
+    --bg-dark: #131417;
+    --bg-surface: #18191f;
+    --bg-card: #1c1d24;
+    --bg-elevated: #22242c;
+    --bg-bright: #2b2d37;
+
+    --accent-primary: #8B5CF6;
+    --accent-light: #D0BCFF;
+    --accent-cyan: #06B6D4;
+    --accent-aqua: #4CD7F6;
+    --accent-emerald: #10B981;
+    --accent-mint: #4EDEA3;
+
+    --text-main: #EAE8E7;
+    --text-secondary: #CBC3D7;
+    --text-muted: #958EA0;
+
+    --font-sans: 'Plus Jakarta Sans', 'Poppins', sans-serif;
+    --font-heading: 'Space Grotesk', 'Plus Jakarta Sans', sans-serif;
+    --font-brand: 'Syne', 'Space Grotesk', sans-serif;
+    --font-serif: 'Instrument Serif', Georgia, serif;
+  }
+
+  body {
+    background-color: #131417;
+    color: var(--text-main);
+    font-family: var(--font-sans);
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+}
+
+/* Custom Typography Utility Classes */
+.font-brand {
+  font-family: var(--font-brand);
+}
+
+.font-heading {
+  font-family: var(--font-heading);
+}
+
+.font-body {
+  font-family: var(--font-sans);
+}
+
+.font-serif-italic {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+}
+
+/* Glassmorphism Styles with Sophisticated Gray Tone */
+.glass-panel {
+  background: #18191f;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid #282a33;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.glass-panel-hover {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-panel-hover:hover {
+  background: #1e2027;
+  border-color: #383b48;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transform: translateY(-4px);
+}
+
+/* Button Glass Effect */
+.glass-button-secondary {
+  background: #1c1d23;
+  backdrop-filter: blur(12px);
+  border: 1px solid #2c2e38;
+  color: #E5E2E1;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-button-secondary:hover {
+  background: #242630;
+  border-color: #434756;
+  color: #ffffff;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  transform: translateY(-2px);
+}
+
+/* Noise Texture Overlay */
+.noise-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Vignette Effect */
+.vignette-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  background: radial-gradient(circle at center, transparent 45%, rgba(19, 20, 23, 0.75) 100%);
+}
+
+/* Diagonal Overlay Shape */
+.diagonal-overlay {
+  position: absolute;
+  top: -20%;
+  right: -10%;
+  width: 120%;
+  height: 140%;
+  background: linear-gradient(135deg, transparent 20%, rgba(19, 20, 23, 0.85) 50%, rgba(28, 29, 36, 0.98) 75%);
+  transform: rotate(-15deg);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Background Typography Text (DESIGNER) */
+.bg-designer-text {
+  font-family: var(--font-brand);
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  color: #E5E2E1;
+  opacity: 0.14;
+  user-select: none;
+  line-height: 0.85;
+  white-space: nowrap;
+  text-shadow: 0 0 40px rgba(255, 255, 255, 0.05);
+}
+
+/* Infinite Marquee ticker */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 30s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #131417;
+}
+::-webkit-scrollbar-thumb {
+  background: #2b2d37;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3c3f4e;
+}
+
+
