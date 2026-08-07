@@ -148,32 +148,20 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
       className="relative z-10 w-full py-14 lg:py-20 px-4 sm:px-6 lg:px-8 max-w-[1200px] mx-auto overflow-hidden bg-transparent"
     >
       {/* ✳ SELF-SUMMARY ✳ Header */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.88, filter: 'blur(10px)' }}
-        whileInView={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
-        viewport={{ once: true, margin: '-60px' }}
-        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className="flex items-center justify-center gap-3 sm:gap-4 mb-8 sm:mb-10 text-center"
-      >
+      <div className="flex items-center justify-center gap-3 sm:gap-4 mb-8 sm:mb-10 text-center">
         <Starburst className="w-5 h-5 sm:w-6 sm:h-6 text-[#8B5CF6] animate-pulse" />
         <h2 className="font-heading font-black text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white tracking-tight uppercase">
           SELF-SUMMARY
         </h2>
         <Starburst className="w-5 h-5 sm:w-6 sm:h-6 text-[#8B5CF6] animate-pulse" />
-      </motion.div>
+      </div>
 
       {/* Bento Grid Container */}
-      <div className="space-y-4 sm:space-y-5 [perspective:1000px]">
+      <div className="space-y-4 sm:space-y-5">
         {/* ================= ROW 1: Hero Avatar + Bio Summary ================= */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-5 items-stretch">
           {/* Left Avatar Card */}
-          <motion.div
-            initial={{ opacity: 0, x: -60, rotateY: -12, scale: 0.95 }}
-            whileInView={{ opacity: 1, x: 0, rotateY: 0, scale: 1 }}
-            viewport={{ once: true, margin: '-60px' }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-5 rounded-[28px] bg-[#191b20] border border-[#2a2d37] p-4 sm:p-5 shadow-[0_15px_35px_rgba(0,0,0,0.5)] flex flex-col justify-center items-center relative overflow-hidden group hover:border-[#38BDF8]/40 transition-all duration-300"
-          >
+          <div className="lg:col-span-5 rounded-[28px] bg-[#191b20] border border-[#2a2d37] p-4 sm:p-5 shadow-[0_15px_35px_rgba(0,0,0,0.5)] flex flex-col justify-center items-center relative overflow-hidden group hover:border-[#38BDF8]/40 transition-all duration-300">
             {/* Inner Avatar Box with Sky/Blue Ambient Glow Backdrop matching reference */}
             <div className="w-full relative aspect-square sm:aspect-[4/3] lg:aspect-square rounded-[20px] overflow-hidden bg-gradient-to-tr from-[#1e3a8a]/80 via-[#0284c7] to-[#38bdf8] p-1 flex items-center justify-center shadow-inner">
               <img
@@ -184,16 +172,10 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
               />
               <div className="absolute inset-0 rounded-[18px] bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
             </div>
-          </motion.div>
+          </div>
 
           {/* Right Bio Card */}
-          <motion.div
-            initial={{ opacity: 0, x: 60, rotateY: 12, scale: 0.95 }}
-            whileInView={{ opacity: 1, x: 0, rotateY: 0, scale: 1 }}
-            viewport={{ once: true, margin: '-60px' }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.12 }}
-            className="lg:col-span-7 rounded-[28px] bg-[#191b20] border border-[#2a2d37] p-6 sm:p-8 lg:p-9 shadow-[0_15px_35px_rgba(0,0,0,0.5)] flex flex-col justify-between relative group hover:border-[#38BDF8]/40 transition-all duration-300"
-          >
+          <div className="lg:col-span-7 rounded-[28px] bg-[#191b20] border border-[#2a2d37] p-6 sm:p-8 lg:p-9 shadow-[0_15px_35px_rgba(0,0,0,0.5)] flex flex-col justify-between relative group hover:border-[#38BDF8]/40 transition-all duration-300">
             <div className="space-y-3 sm:space-y-4">
               <div className="flex items-start justify-between">
                 <HangingStar />
@@ -237,17 +219,13 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
                 <ArrowUpRight className="w-3.5 h-3.5 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
               </button>
             </div>
-          </motion.div>
+          </div>
         </div>
 
         {/* ================= ROW 2: Experience + Education ================= */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 items-stretch">
           {/* Experience Card */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-60px' }}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          <div
             className="rounded-[28px] bg-[#191b20] border border-[#2a2d37] p-6 sm:p-7 shadow-[0_15px_35px_rgba(0,0,0,0.5)] flex flex-col justify-between space-y-5 hover:border-[#38BDF8]/40 transition-all duration-300"
           >
             <div>
@@ -271,14 +249,10 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
                 ))}
               </div>
             </div>
-          </motion.div>
+          </div>
 
           {/* Education Card */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-60px' }}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+          <div
             className="rounded-[28px] bg-[#191b20] border border-[#2a2d37] p-6 sm:p-7 shadow-[0_15px_35px_rgba(0,0,0,0.5)] flex flex-col justify-between space-y-5 hover:border-[#38BDF8]/40 transition-all duration-300"
           >
             <div>
@@ -302,17 +276,13 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
                 ))}
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
 
         {/* ================= ROW 3: Profiles + Work Together + Credentials ================= */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-5 items-stretch">
           {/* Left: Profiles / Stay With Me */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-60px' }}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          <div
             className="md:col-span-12 lg:col-span-3 rounded-[28px] bg-[#191b20] border border-[#2a2d37] p-5 sm:p-6 flex flex-col justify-between shadow-[0_15px_35px_rgba(0,0,0,0.5)] hover:border-[#38BDF8]/40 transition-all duration-300 group"
           >
             {/* Top inner social icons container */}
@@ -348,14 +318,10 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
 
               <CircleArrow />
             </div>
-          </motion.div>
+          </div>
 
           {/* Center: Let's work together */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-60px' }}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+          <div
             onClick={onOpenContact}
             className="md:col-span-12 lg:col-span-6 rounded-[28px] bg-[#191b20] border border-[#2a2d37] p-6 sm:p-8 flex flex-col justify-between shadow-[0_15px_35px_rgba(0,0,0,0.5)] hover:border-[#38BDF8]/40 transition-all duration-300 group cursor-pointer relative overflow-hidden"
           >
@@ -378,14 +344,10 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
                 <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </div>
             </div>
-          </motion.div>
+          </div>
 
           {/* Right: Credentials / More About Me */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-60px' }}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+          <div
             onClick={() => setShowCredentialsModal(true)}
             className="md:col-span-12 lg:col-span-3 rounded-[28px] bg-[#191b20] border border-[#2a2d37] p-5 sm:p-6 flex flex-col justify-between shadow-[0_15px_35px_rgba(0,0,0,0.5)] hover:border-[#38BDF8]/40 transition-all duration-300 group cursor-pointer"
           >
@@ -407,7 +369,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
 
               <CircleArrow />
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
 

@@ -86,23 +86,10 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onOpenContact 
       id="services"
       className="relative z-10 w-full py-16 lg:py-24 px-4 sm:px-6 lg:px-8 max-w-[1280px] mx-auto bg-transparent select-none overflow-hidden"
     >
-      {/* Background Ambient Violet Glow */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-gradient-to-tr from-[#8B5CF6]/15 via-[#38BDF8]/10 to-transparent blur-[150px] rounded-full pointer-events-none -z-10" />
-
       {/* Main Outer Container */}
       <div className="w-full bg-transparent p-0 relative overflow-hidden">
-        
-        {/* Subtle inner grid pattern */}
-        <div className="absolute inset-0 bg-[radial-gradient(#8B5CF6_1px,transparent_1px)] [background-size:24px_24px] opacity-[0.03] pointer-events-none" />
-
         {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: -30, filter: 'blur(10px)' }}
-          whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-          viewport={{ once: true, margin: '-80px' }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="text-center max-w-2xl mx-auto mb-12 sm:mb-16 space-y-3"
-        >
+        <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16 space-y-3">
           <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-[#1c1e27] border border-[#2e3140] text-[#8B5CF6] text-xs font-semibold tracking-wider shadow-sm">
             <span>Our Services</span>
             <div className="w-4 h-4 rounded-full bg-[#8B5CF6]/20 flex items-center justify-center text-[#8B5CF6]">
@@ -117,20 +104,20 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onOpenContact 
           <p className="text-[#958EA0] text-xs sm:text-sm leading-relaxed max-w-xl mx-auto">
             High-impact visual solutions crafted to elevate your brand story through UI design, web development, motion graphics, and video production.
           </p>
-        </motion.div>
+        </div>
 
         {/* Services Bento Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 [perspective:1000px]">
-          {basithServices.map((service, index) => {
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {basithServices.map((service) => {
             const accent = getServiceAccentColor(service.id);
             return (
               <motion.div
                 key={service.id}
-                initial={{ opacity: 0, y: 50, rotateX: 15, scale: 0.9, filter: 'blur(8px)' }}
-                whileInView={{ opacity: 1, y: 0, rotateX: 0, scale: 1, filter: 'blur(0px)' }}
-                viewport={{ once: true, margin: '-60px' }}
-                transition={{ duration: 0.7, delay: index * 0.12, ease: [0.16, 1, 0.3, 1] }}
-                whileHover={{ y: -8, scale: 1.02, transition: { duration: 0.25 } }}
+                whileHover={{
+                  y: -6,
+                  scale: 1.02,
+                  transition: { duration: 0.25 },
+                }}
                 onClick={onOpenContact}
                 className={`rounded-[28px] bg-[#171822] border border-[#2a2d3c] ${accent.border} p-6 sm:p-8 flex flex-col justify-between relative group overflow-hidden transition-all duration-300 shadow-lg hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)] cursor-pointer min-h-[320px]`}
               >
@@ -179,11 +166,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onOpenContact 
 
           {/* Call-to-Action Card */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-60px' }}
-            transition={{ duration: 0.5, delay: basithServices.length * 0.1 }}
-            whileHover={{ y: -6, transition: { duration: 0.25 } }}
+            whileHover={{ y: -6, scale: 1.02, transition: { duration: 0.25 } }}
             onClick={onOpenContact}
             className="rounded-[28px] bg-gradient-to-br from-[#1e1b2e] via-[#171822] to-[#121319] border border-[#8B5CF6]/40 hover:border-[#8B5CF6] p-6 sm:p-8 flex flex-col justify-between relative group overflow-hidden transition-all duration-300 shadow-xl cursor-pointer min-h-[320px]"
           >
