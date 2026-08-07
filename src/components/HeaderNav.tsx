@@ -71,7 +71,7 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({
       </div>
 
       {/* Center navigation links */}
-      <nav className="hidden lg:flex items-center space-x-0.5 px-3 py-1 rounded-full bg-[#191b20] border border-[#2a2d37] text-xs font-medium text-[#CBC3D7]">
+      <nav className="hidden lg:flex items-center space-x-0.5 text-xs font-medium text-[#CBC3D7]">
         <button
           onClick={() => scrollToSection('about', onOpenAbout)}
           className="px-3 py-1 rounded-full hover:text-white hover:bg-[#252731] transition-all cursor-pointer"
