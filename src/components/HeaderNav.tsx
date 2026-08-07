@@ -103,12 +103,7 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({
           <span>Store</span>
           <span className="px-1.5 py-0.2 rounded-full bg-[#8B5CF6] text-[9px] text-white font-bold">PRO</span>
         </button>
-        <button
-          onClick={() => scrollToSection('contact', onOpenStartProject)}
-          className="px-3 py-1 rounded-full hover:text-white hover:bg-[#252731] transition-all cursor-pointer"
-        >
-          Contact
-        </button>
+
       </nav>
 
       {/* Right controls */}
