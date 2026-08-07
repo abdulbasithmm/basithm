@@ -44,10 +44,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           className="text-4xl sm:text-6xl md:text-7xl lg:text-[76px] font-extrabold tracking-tight text-white leading-[1.08]"
         >
           <span className="block font-heading font-bold text-white tracking-tight">
-            Bringing Ideas to Life
+            Bringing Creative Visions
           </span>
           <span className="block mt-1 sm:mt-2 text-white">
-            <span className="font-heading font-bold mr-2 sm:mr-3">with</span>
+            <span className="font-heading font-bold mr-2 sm:mr-3">To Life Through</span>
             <span className="font-serif-italic font-normal italic text-[#FFFFFF] drop-shadow-[0_0_35px_rgba(56,189,248,0.35)]">
               Motion
             </span>
