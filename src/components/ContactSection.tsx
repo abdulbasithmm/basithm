@@ -27,11 +27,11 @@ export const ContactSection: React.FC = () => {
   return (
     <section id="contact" className="relative z-10 w-full py-14 lg:py-20 px-4 sm:px-6 lg:px-8 max-w-[1240px] mx-auto overflow-hidden bg-transparent">
       {/* Main Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start [perspective:1000px]">
         {/* Left Column: Direct Contact Info (Slide In Left) */}
         <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, x: -60, rotateY: -12, scale: 0.92, filter: 'blur(8px)' }}
+          whileInView={{ opacity: 1, x: 0, rotateY: 0, scale: 1, filter: 'blur(0px)' }}
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="lg:col-span-5 space-y-6"
@@ -112,10 +112,10 @@ export const ContactSection: React.FC = () => {
 
         {/* Right Column: Interactive Brief Form (Slide In Right) */}
         <motion.div
-          initial={{ opacity: 0, x: 50 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, x: 60, rotateY: 12, scale: 0.92, filter: 'blur(8px)' }}
+          whileInView={{ opacity: 1, x: 0, rotateY: 0, scale: 1, filter: 'blur(0px)' }}
           viewport={{ once: true, margin: '-100px' }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.12 }}
           className="lg:col-span-7 glass-panel p-8 sm:p-10 rounded-3xl border border-[#2a2d37] relative overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
         >
           <h3 className="font-heading font-extrabold text-[#E5E2E1] text-2xl mb-6">

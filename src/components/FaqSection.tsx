@@ -36,10 +36,10 @@ export const FaqSection: React.FC = () => {
     <section className="relative z-10 w-full py-14 lg:py-20 px-4 sm:px-6 lg:px-8 max-w-[1020px] mx-auto overflow-hidden bg-transparent">
       {/* Header */}
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0, y: -30, filter: 'blur(8px)' }}
+        whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
         viewport={{ once: true, margin: '-100px' }}
-        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         className="text-center max-w-xl mx-auto mb-8 space-y-2"
       >
         <div className="inline-flex items-center space-x-2 text-[#8B5CF6] text-xs font-semibold tracking-widest uppercase px-3 py-1 rounded-full bg-[#191b20] border border-[#2a2d37]">
@@ -58,10 +58,10 @@ export const FaqSection: React.FC = () => {
           return (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 25 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.08 }}
+              initial={{ opacity: 0, x: index % 2 === 0 ? -35 : 35, y: 20 }}
+              whileInView={{ opacity: 1, x: 0, y: 0 }}
+              viewport={{ once: true, margin: '-40px' }}
+              transition={{ duration: 0.6, delay: index * 0.09, ease: [0.16, 1, 0.3, 1] }}
               className={`glass-panel rounded-xl border transition-colors overflow-hidden ${
                 isOpen ? 'border-[#8B5CF6]/50 bg-[#1f2028] shadow-[0_0_30px_rgba(139,92,246,0.15)]' : 'border-[#2a2d37] hover:border-[#3a3d4a]'
               }`}

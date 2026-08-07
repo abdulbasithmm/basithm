@@ -97,10 +97,10 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onOpenContact 
 
         {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: -30, filter: 'blur(10px)' }}
+          whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
           viewport={{ once: true, margin: '-80px' }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="text-center max-w-2xl mx-auto mb-12 sm:mb-16 space-y-3"
         >
           <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-[#1c1e27] border border-[#2e3140] text-[#8B5CF6] text-xs font-semibold tracking-wider shadow-sm">
@@ -120,17 +120,17 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onOpenContact 
         </motion.div>
 
         {/* Services Bento Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 [perspective:1000px]">
           {basithServices.map((service, index) => {
             const accent = getServiceAccentColor(service.id);
             return (
               <motion.div
                 key={service.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, y: 50, rotateX: 15, scale: 0.9, filter: 'blur(8px)' }}
+                whileInView={{ opacity: 1, y: 0, rotateX: 0, scale: 1, filter: 'blur(0px)' }}
                 viewport={{ once: true, margin: '-60px' }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ y: -6, transition: { duration: 0.25 } }}
+                transition={{ duration: 0.7, delay: index * 0.12, ease: [0.16, 1, 0.3, 1] }}
+                whileHover={{ y: -8, scale: 1.02, transition: { duration: 0.25 } }}
                 onClick={onOpenContact}
                 className={`rounded-[28px] bg-[#171822] border border-[#2a2d3c] ${accent.border} p-6 sm:p-8 flex flex-col justify-between relative group overflow-hidden transition-all duration-300 shadow-lg hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)] cursor-pointer min-h-[320px]`}
               >

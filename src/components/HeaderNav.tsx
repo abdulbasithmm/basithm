@@ -9,6 +9,7 @@ interface HeaderNavProps {
   onOpenStore: () => void;
   onOpenTestimonials: () => void;
   onOpenAbout: () => void;
+  onOpenFollow?: () => void;
   cartCount: number;
 }
 
@@ -19,6 +20,7 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({
   onOpenStore,
   onOpenTestimonials,
   onOpenAbout,
+  onOpenFollow,
   cartCount,
 }) => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -95,6 +97,12 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({
           className="px-3 py-1 rounded-full hover:text-white hover:bg-[#252731] transition-all cursor-pointer"
         >
           Clients
+        </button>
+        <button
+          onClick={() => scrollToSection('follow', onOpenFollow || (() => {}))}
+          className="px-3 py-1 rounded-full hover:text-white hover:bg-[#252731] transition-all cursor-pointer"
+        >
+          Follow
         </button>
         <button
           onClick={() => scrollToSection('store', onOpenStore)}

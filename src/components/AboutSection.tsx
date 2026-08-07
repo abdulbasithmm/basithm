@@ -149,10 +149,10 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
     >
       {/* ✳ SELF-SUMMARY ✳ Header */}
       <motion.div
-        initial={{ opacity: 0, y: 25 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0, scale: 0.88, filter: 'blur(10px)' }}
+        whileInView={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
         viewport={{ once: true, margin: '-60px' }}
-        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         className="flex items-center justify-center gap-3 sm:gap-4 mb-8 sm:mb-10 text-center"
       >
         <Starburst className="w-5 h-5 sm:w-6 sm:h-6 text-[#8B5CF6] animate-pulse" />
@@ -163,15 +163,15 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
       </motion.div>
 
       {/* Bento Grid Container */}
-      <div className="space-y-4 sm:space-y-5">
+      <div className="space-y-4 sm:space-y-5 [perspective:1000px]">
         {/* ================= ROW 1: Hero Avatar + Bio Summary ================= */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-5 items-stretch">
           {/* Left Avatar Card */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: -60, rotateY: -12, scale: 0.95 }}
+            whileInView={{ opacity: 1, x: 0, rotateY: 0, scale: 1 }}
             viewport={{ once: true, margin: '-60px' }}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-5 rounded-[28px] bg-[#191b20] border border-[#2a2d37] p-4 sm:p-5 shadow-[0_15px_35px_rgba(0,0,0,0.5)] flex flex-col justify-center items-center relative overflow-hidden group hover:border-[#38BDF8]/40 transition-all duration-300"
           >
             {/* Inner Avatar Box with Sky/Blue Ambient Glow Backdrop matching reference */}
@@ -188,10 +188,10 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
 
           {/* Right Bio Card */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: 60, rotateY: 12, scale: 0.95 }}
+            whileInView={{ opacity: 1, x: 0, rotateY: 0, scale: 1 }}
             viewport={{ once: true, margin: '-60px' }}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.12 }}
             className="lg:col-span-7 rounded-[28px] bg-[#191b20] border border-[#2a2d37] p-6 sm:p-8 lg:p-9 shadow-[0_15px_35px_rgba(0,0,0,0.5)] flex flex-col justify-between relative group hover:border-[#38BDF8]/40 transition-all duration-300"
           >
             <div className="space-y-3 sm:space-y-4">

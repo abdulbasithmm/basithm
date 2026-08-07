@@ -42,9 +42,9 @@ export interface SocialPlatformData {
 const platformsData: SocialPlatformData[] = [
   {
     id: 'instagram',
-    name: 'zentrix.design',
-    handle: '@zentrix.design',
-    url: 'https://www.instagram.com/zentrix.design/',
+    name: 'baz_ith_m2',
+    handle: '@baz_ith_m2',
+    url: 'https://www.instagram.com/baz_ith_m2/',
     followers: '22.2K',
     following: '500',
     description:
@@ -173,10 +173,10 @@ export const FollowSection: React.FC = () => {
 
       {/* Header section */}
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0, scale: 0.9, y: 35, filter: 'blur(8px)' }}
+        whileInView={{ opacity: 1, scale: 1, y: 0, filter: 'blur(0px)' }}
         viewport={{ once: true, margin: '-80px' }}
-        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         className="text-center max-w-2xl mx-auto mb-10 sm:mb-12 space-y-4"
       >
         {/* Pill Badge */}

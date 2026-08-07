@@ -30,7 +30,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           New
         </span>
         <span className="text-xs sm:text-[13px] text-[#94A3B8] group-hover:text-white transition-colors font-medium flex items-center gap-1.5">
-          We've made our pricing public
+          Available for freelance projects
           <ArrowRight className="w-3.5 h-3.5 text-[#94A3B8] group-hover:text-[#38BDF8] group-hover:translate-x-0.5 transition-all" />
         </span>
       </motion.div>
@@ -44,12 +44,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           className="text-4xl sm:text-6xl md:text-7xl lg:text-[76px] font-extrabold tracking-tight text-white leading-[1.08]"
         >
           <span className="block font-heading font-bold text-white tracking-tight">
-            Transform Your Business
+            Bringing Ideas to Life
           </span>
           <span className="block mt-1 sm:mt-2 text-white">
-            <span className="font-heading font-bold mr-2 sm:mr-3">With Our</span>
+            <span className="font-heading font-bold mr-2 sm:mr-3">with</span>
             <span className="font-serif-italic font-normal italic text-[#FFFFFF] drop-shadow-[0_0_35px_rgba(56,189,248,0.35)]">
-              SaaS Solution
+              Motion
             </span>
           </span>
         </motion.h1>
@@ -61,7 +61,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           transition={{ duration: 0.8, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
           className="text-[#94A3B8] text-sm sm:text-base md:text-[17px] leading-relaxed max-w-2xl font-normal px-4"
         >
-          Streamline your operations, boost productivity, and enhance customer satisfaction with our cutting-edge SaaS platform. Experience seamless integration and unparalleled support.
+          Hi, I'm Abdul Basith MM. I craft stunning motion graphics, visual effects, and digital experiences that captivate and convert.
         </motion.p>
 
         {/* ACTION BUTTONS */}

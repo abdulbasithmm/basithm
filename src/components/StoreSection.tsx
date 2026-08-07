@@ -33,10 +33,10 @@ export const StoreSection: React.FC<StoreSectionProps> = ({
     <section id="store" className="relative z-10 w-full py-14 lg:py-20 px-4 sm:px-6 lg:px-8 max-w-[1240px] mx-auto overflow-hidden bg-transparent">
       {/* Header */}
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0, x: -40, filter: 'blur(8px)' }}
+        whileInView={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
         viewport={{ once: true, margin: '-100px' }}
-        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         className="flex flex-col lg:flex-row lg:items-end justify-between mb-8 gap-4"
       >
         <div>
@@ -62,15 +62,15 @@ export const StoreSection: React.FC<StoreSectionProps> = ({
           return (
             <motion.div
               key={prod.id}
-              initial={{ opacity: 0, y: 45, scale: 0.93 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30, y: 50, scale: 0.9, rotate: index % 2 === 0 ? -2 : 2 }}
+              whileInView={{ opacity: 1, x: 0, y: 0, scale: 1, rotate: 0 }}
               viewport={{ once: true, margin: '-80px' }}
               transition={{
-                duration: 0.6,
-                delay: index * 0.12,
+                duration: 0.7,
+                delay: index * 0.14,
                 ease: [0.16, 1, 0.3, 1],
               }}
-              whileHover={{ y: -6, transition: { duration: 0.25 } }}
+              whileHover={{ y: -8, scale: 1.02, transition: { duration: 0.25 } }}
               className="glass-panel glass-panel-hover rounded-2xl overflow-hidden flex flex-col justify-between border border-[#2a2d37] hover:border-[#8B5CF6]/50 transition-colors group shadow-[0_15px_35px_rgba(0,0,0,0.5)]"
             >
               <div>

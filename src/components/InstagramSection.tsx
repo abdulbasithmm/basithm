@@ -43,10 +43,10 @@ export const InstagramSection: React.FC = () => {
     <section className="relative z-10 w-full py-12 lg:py-16 overflow-hidden bg-transparent">
       {/* Header */}
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0, scale: 0.9, y: 30, filter: 'blur(10px)' }}
+        whileInView={{ opacity: 1, scale: 1, y: 0, filter: 'blur(0px)' }}
         viewport={{ once: true }}
-        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         className="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between mb-8 gap-4"
       >
         <div>
@@ -55,14 +55,14 @@ export const InstagramSection: React.FC = () => {
             <span>Social Feed</span>
           </div>
           <h2 className="font-heading font-extrabold text-xl sm:text-2xl text-[#E5E2E1] tracking-tight">
-            Follow <span className="text-[#8B5CF6]">@basithframes</span> on Instagram
+            Follow <span className="text-[#8B5CF6]">@baz_ith_m2</span> on Instagram
           </h2>
         </div>
 
         <motion.a
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          href="https://instagram.com/basithframes"
+          href="https://www.instagram.com/baz_ith_m2/"
           target="_blank"
           rel="noopener noreferrer"
           className="glass-button-secondary px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider flex items-center space-x-2 transition-all cursor-pointer group shadow-md"
@@ -78,7 +78,7 @@ export const InstagramSection: React.FC = () => {
           {marqueeList.map((item, idx) => (
             <a
               key={idx}
-              href="https://instagram.com/basithframes"
+              href="https://www.instagram.com/baz_ith_m2/"
               target="_blank"
               rel="noopener noreferrer"
               className="w-52 sm:w-60 h-64 sm:h-72 flex-shrink-0 glass-panel rounded-2xl overflow-hidden relative group border border-[#2a2d37] hover:border-[#8B5CF6]/50 transition-all duration-300 block hover:-translate-y-1.5 shadow-lg"
