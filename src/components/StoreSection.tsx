@@ -30,7 +30,7 @@ export const StoreSection: React.FC<StoreSectionProps> = ({
   const cartTotal = cart.reduce((acc, c) => acc + c.priceNum, 0);
 
   return (
-    <section id="store" className="relative z-10 w-full py-14 lg:py-20 px-4 sm:px-6 lg:px-8 max-w-[1240px] mx-auto border-t border-[#282a33] overflow-hidden bg-transparent">
+    <section id="store" className="relative z-10 w-full py-14 lg:py-20 px-4 sm:px-6 lg:px-8 max-w-[1240px] mx-auto overflow-hidden bg-transparent">
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}

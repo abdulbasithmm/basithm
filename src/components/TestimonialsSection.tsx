@@ -135,7 +135,7 @@ export const TestimonialsSection: React.FC = () => {
   return (
     <section
       id="testimonials"
-      className="relative z-10 w-full py-16 lg:py-24 px-4 sm:px-6 lg:px-8 max-w-[1280px] mx-auto border-t border-[#282a33] overflow-hidden bg-transparent select-none"
+      className="relative z-10 w-full py-16 lg:py-24 px-4 sm:px-6 lg:px-8 max-w-[1280px] mx-auto overflow-hidden bg-transparent select-none"
     >
       {/* Signature Violet & Cyan Ambient Glow background */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[350px] bg-gradient-to-b from-[#8B5CF6]/15 via-[#38BDF8]/10 to-transparent blur-[140px] rounded-full pointer-events-none -z-10" />

@@ -166,7 +166,7 @@ export const FollowSection: React.FC = () => {
   return (
     <section
       id="follow"
-      className="relative z-10 w-full py-16 lg:py-24 px-4 sm:px-6 lg:px-8 max-w-[1280px] mx-auto border-t border-[#282a33] bg-transparent select-none overflow-hidden"
+      className="relative z-10 w-full py-16 lg:py-24 px-4 sm:px-6 lg:px-8 max-w-[1280px] mx-auto bg-transparent select-none overflow-hidden"
     >
       {/* Background Ambient Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-gradient-to-tr from-[#8B5CF6]/15 via-[#38BDF8]/10 to-transparent blur-[140px] rounded-full pointer-events-none -z-10" />

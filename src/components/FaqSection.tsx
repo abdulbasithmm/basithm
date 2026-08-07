@@ -33,7 +33,7 @@ export const FaqSection: React.FC = () => {
   };
 
   return (
-    <section className="relative z-10 w-full py-14 lg:py-20 px-4 sm:px-6 lg:px-8 max-w-[1020px] mx-auto border-t border-[#282a33] overflow-hidden bg-transparent">
+    <section className="relative z-10 w-full py-14 lg:py-20 px-4 sm:px-6 lg:px-8 max-w-[1020px] mx-auto overflow-hidden bg-transparent">
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}

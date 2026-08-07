@@ -145,7 +145,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
   return (
     <section
       id="about"
-      className="relative z-10 w-full py-14 lg:py-20 px-4 sm:px-6 lg:px-8 max-w-[1200px] mx-auto border-t border-[#282a33] overflow-hidden bg-transparent"
+      className="relative z-10 w-full py-14 lg:py-20 px-4 sm:px-6 lg:px-8 max-w-[1200px] mx-auto overflow-hidden bg-transparent"
     >
       {/* ✳ SELF-SUMMARY ✳ Header */}
       <motion.div

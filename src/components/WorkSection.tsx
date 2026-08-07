@@ -102,7 +102,7 @@ export const WorkSection: React.FC<WorkSectionProps> = ({ onOpenWorkModal }) => 
   ];
 
   return (
-    <section id="work" className="relative z-10 w-full py-16 lg:py-24 px-4 sm:px-6 lg:px-8 max-w-[1280px] mx-auto border-t border-[#282a33] overflow-hidden bg-transparent select-none">
+    <section id="work" className="relative z-10 w-full py-16 lg:py-24 px-4 sm:px-6 lg:px-8 max-w-[1280px] mx-auto overflow-hidden bg-transparent select-none">
       {/* Soft Ambient Background Glow */}
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] sm:w-[900px] h-[350px] bg-radial from-white/10 via-purple-500/5 to-transparent blur-[140px] rounded-full pointer-events-none -z-10" />
 

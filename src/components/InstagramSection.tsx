@@ -40,7 +40,7 @@ export const InstagramSection: React.FC = () => {
   const marqueeList = [...feedItems, ...feedItems];
 
   return (
-    <section className="relative z-10 w-full py-12 lg:py-16 border-t border-[#282a33] overflow-hidden bg-transparent">
+    <section className="relative z-10 w-full py-12 lg:py-16 overflow-hidden bg-transparent">
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
