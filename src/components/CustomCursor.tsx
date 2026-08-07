@@ -319,66 +319,6 @@ export const CustomCursor: React.FC = () => {
           </motion.div>
         </>
       )}
-
-      {/* Floating Cursor Mode Control Badge (Bottom Left) */}
-      <div className="fixed bottom-6 left-6 z-50 hidden lg:block">
-        <AnimatePresence>
-          {showModeMenu && (
-            <motion.div
-              initial={{ opacity: 0, y: 15, scale: 0.9 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: 15, scale: 0.9 }}
-              transition={{ duration: 0.2 }}
-              className="mb-3 p-2 rounded-2xl bg-[#0A0A0A]/95 backdrop-blur-2xl border border-[#2A2A2A] shadow-[0_15px_40px_rgba(0,0,0,0.8)] space-y-1.5 w-56"
-            >
-              <div className="px-3 py-1 text-[10px] font-bold text-[#958EA0] uppercase tracking-wider border-b border-[#2A2A2A] flex items-center justify-between">
-                <span>Select Cursor Style</span>
-                <span className="w-1.5 h-1.5 rounded-full bg-[#8B5CF6] animate-pulse" />
-              </div>
-
-              {modesList.map((m) => {
-                const Icon = m.icon;
-                const isSelected = mode === m.id;
-                return (
-                  <button
-                    key={m.id}
-                    onClick={() => {
-                      setMode(m.id);
-                      setShowModeMenu(false);
-                    }}
-                    className={`w-full text-left px-3 py-2 rounded-xl transition-all flex items-center space-x-2.5 cursor-pointer ${
-                      isSelected
-                        ? 'bg-[#8B5CF6] text-white shadow-[0_0_15px_rgba(139,92,246,0.4)]'
-                        : 'text-[#CBC3D7] hover:text-white hover:bg-[#2A2A2A]'
-                    }`}
-                  >
-                    <Icon className={`w-4 h-4 ${isSelected ? 'text-white' : 'text-[#8B5CF6]'}`} />
-                    <div>
-                      <div className="text-xs font-bold leading-tight">{m.name}</div>
-                      <div className={`text-[10px] ${isSelected ? 'text-white/80' : 'text-[#958EA0]'}`}>
-                        {m.desc}
-                      </div>
-                    </div>
-                  </button>
-                );
-              })}
-            </motion.div>
-          )}
-        </AnimatePresence>
-
-        {/* Toggle Button */}
-        <button
-          onClick={() => setShowModeMenu(!showModeMenu)}
-          className="flex items-center space-x-2 px-3.5 py-2 rounded-full bg-[#0A0A0A]/90 backdrop-blur-xl border border-[#2A2A2A] text-[#E5E2E1] hover:border-[#8B5CF6]/60 transition-all text-xs font-semibold shadow-lg hover:shadow-[0_0_20px_rgba(139,92,246,0.3)] cursor-pointer group"
-          title="Switch Cursor Animation Style"
-        >
-          <span className="w-2 h-2 rounded-full bg-[#8B5CF6] animate-ping" />
-          <span className="text-[11px] uppercase tracking-wider text-[#958EA0] group-hover:text-[#E5E2E1] transition-colors">
-            Cursor Mode: <span className="text-[#E5E2E1] font-bold">{modesList.find((m) => m.id === mode)?.name}</span>
-          </span>
-          <MousePointer className="w-3.5 h-3.5 text-[#8B5CF6] group-hover:rotate-12 transition-transform ml-1" />
-        </button>
-      </div>
     </>
   );
 };
