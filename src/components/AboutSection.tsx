@@ -194,7 +194,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
               </div>
 
               <p className="text-[#9E98AA] text-xs sm:text-sm sm:leading-relaxed pt-1">
-                I am a Malappuram-based motion designer and visual editor with a strong focus on visual storytelling, brand identities, and digital media production. I have a diverse range of experience having worked across various creative fields and industries.
+                Creative professional skilled in Graphic Design, Branding, Social Media, Motion Graphics, Video Editing, and Web Development. I combine creativity and technology to build impactful digital brands and engaging online experiences. Always eager to learn, innovate, and collaborate on creative projects.
               </p>
             </div>
 
