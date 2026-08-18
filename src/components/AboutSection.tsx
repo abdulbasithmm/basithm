@@ -77,27 +77,27 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
 
   const experiences = [
     {
-      period: '2022 - PRESENT',
-      role: 'Lead Motion & Visual Designer',
-      company: 'Basith Frames / Freelance',
+      period: '2024 – PRESENT',
+      role: 'Creative Director & Visual Designer',
+      company: 'Freelance / Independent',
     },
     {
-      period: '2020 - 2022',
-      role: 'Senior Video Editor & Animator',
-      company: 'DigiBayt Creative Studio',
+      period: '2025 – 2026',
+      role: 'Motion Graphics & Graphic Design & Web Design',
+      company: 'Al Hidaya Islamic Academy, kalamassery',
     },
     {
-      period: '2018 - 2020',
-      role: 'Graphic & Brand Identity Designer',
-      company: 'Independent Media Productions',
+      period: '2021 – 2022',
+      role: 'Graphic & Branding Designer',
+      company: 'Freelance Projects',
     },
   ];
 
   const educations = [
     {
-      period: '2019 - 2022',
-      role: 'Bachelor Degree in Computer & Media',
-      institution: 'University of Calicut',
+      period: '2019 - 2026',
+      role: 'Bachelor’s Degree in Islamic Studies',
+      institution: 'Darul Huda Islamic University',
     },
     {
       period: '2022 - 2023',
@@ -190,7 +190,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
               </h3>
 
               <div className="text-xs sm:text-sm font-semibold text-[#38BDF8] uppercase tracking-widest">
-                {personalBio.title} • {personalBio.location}
+                {personalBio.location}
               </div>
 
               <p className="text-[#9E98AA] text-xs sm:text-sm sm:leading-relaxed pt-1">
