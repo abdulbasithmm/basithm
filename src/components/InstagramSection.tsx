@@ -2,37 +2,56 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { Instagram, ArrowUpRight, Heart, Sparkles } from 'lucide-react';
 
+import feedImg1 from '../assets/images/regenerated_image_1787064432160.jpg';
+import feedImg2 from '../assets/images/regenerated_image_1787064416778.jpg';
+import feedImg3 from '../assets/images/regenerated_image_1787064412985.jpg';
+import feedImg4 from '../assets/images/regenerated_image_1787064418336.jpg';
+import feedImg5 from '../assets/images/regenerated_image_1787064422197.jpg';
+import feedImg6 from '../assets/images/regenerated_image_1787064427280.jpg';
+import feedImg7 from '../assets/images/regenerated_image_1787064429189.jpg';
+import feedImg8 from '../assets/images/regenerated_image_1787064430748.jpg';
+
 export const InstagramSection: React.FC = () => {
   const feedItems = [
     {
       id: 1,
-      image: 'https://lh3.googleusercontent.com/aida/AP1WRLuZViy7rEK7F_r6t-vPvoQx3b6g4y3gKQpeFtHi2JU4bJ98IeBFgSVGD1jQNyXPWnDmL9I0Sg-ofosOhAkGbDqUmdP5G7GoIW0lAj8zcVhqZXWUB8T8VMSo4ytG5wCipAZJsggZ6mtcOURuvOvREN-km_NAXNrn0CQpPXmPvlwJ5X_8fTQEo0DvcaqyFHMnCV3MFlTQZ6oRh70uf5ESVF_kWZBp87ybVAE0wcn0fZUhTi6osx4nliI-T885',
+      image: feedImg1,
       likes: '1.4k',
-      title: 'Lyrical Motion Breakdown',
     },
     {
       id: 2,
-      image: 'https://lh3.googleusercontent.com/aida/AP1WRLuUuJPtokCze5p2EtO58SdJ_3v_lEqlvgjUAqrzf9iHRNWSFzgQdhdIXmYHJh8_8jYqnPozCDU2MPOeh2BB-2B3qAcfngkm1YTQ0TBeM3Q135mdxAp6pPLBpXO1Y-HHY-T__eCZm5ZLl-duoaoLRO9ygSE7zp4FikFXD_BklJILR-doBkaJ33W2oyL67AOxT_3FMhpoFqHsBAMnVO6TpinGas0AnlhluQsCPLzchSFarOaP33zfJI7LTXng',
+      image: feedImg2,
       likes: '2.1k',
-      title: '100 Years Legacy Artwork',
     },
     {
       id: 3,
-      image: 'https://lh3.googleusercontent.com/aida/AP1WRLsmLWR_UV6lipIx509gcgUwfBcP1NVLEUssckl9dtgHKZbRbxQDf6b-e5E-TOmexPc5klV73x7UFxuLvOyEyPv2f5dTztFjTiufuHE6vD_oCiuzr3t8SVPXuZpy0hk5VqCdFOioLmTqJsKTZWlisrczfUQilA7ALfQzo-4G4lQe_5BiNbduv6PUdcSyRPMLwOKPxFwZ_KPdu9nphbqYO8E99yvML4bTnFXkxDlWjMHNG9fqb9jedKC7WFQ',
+      image: feedImg3,
       likes: '980',
-      title: 'Nooril Noorin Release Reel',
     },
     {
       id: 4,
-      image: 'https://lh3.googleusercontent.com/aida/AP1WRLuBMsnXE2rDPFW2vgqc4HSb5wmExMaz5aaiMFsYaQvOeRugnuyvUK6WBUmz7IcHpblBqAaedOyy9Q3lzGlkpYgUzTXC-rMywKZq3h6CdN5_t2-5lvaJX5IzcsNnV1j-bsCqdNnRY65-8GSVW8Mzg0p7TPrG5Q1Fo_qcFck15cilRKg9jMtzxG0mMi90RPjycWRfxd3yDOB6TUpyFKD86AwiZtIt4FME3_-o3GZ99DX2CGKykQcqtVzg1I5H',
+      image: feedImg4,
       likes: '3.5k',
-      title: 'Arabic Calligraphy Kinetic Typography',
     },
     {
       id: 5,
-      image: 'https://lh3.googleusercontent.com/aida/AP1WRLtxpvdVV8ptHQpsU3FXbrUaWEHyqzGvTekYfcPp76_tUAMhtPGgJD19rKJmaIF3vF_ORJeIMlzyqc-_luGlJQ-EiwjvQgUT5aSKz5Se9strywyCzEj9LpkUJLZtY0x3IVylW81lUE-SSTYCKHsT4NhruZRYRFjfihENWhGJVazb6qyBtS5na-Wy73cdI_u0r-fbpNk0RXKKQeAWHOSa5xIYYXqdd-yv_X9oETTS3bcBDDUEb8jWpYe5eIDg',
+      image: feedImg5,
       likes: '1.8k',
-      title: 'Arts Fest Event Visual Package',
+    },
+    {
+      id: 6,
+      image: feedImg6,
+      likes: '2.4k',
+    },
+    {
+      id: 7,
+      image: feedImg7,
+      likes: '3.1k',
+    },
+    {
+      id: 8,
+      image: feedImg8,
+      likes: '1.9k',
     },
   ];
 
@@ -85,19 +104,16 @@ export const InstagramSection: React.FC = () => {
             >
               <img
                 src={item.image}
-                alt={item.title}
+                alt=""
                 referrerPolicy="no-referrer"
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#131417]/95 via-[#131417]/30 to-transparent opacity-80 group-hover:opacity-95 transition-opacity" />
 
-              <div className="absolute bottom-3 left-3 right-3 text-left space-y-0.5">
+              <div className="absolute bottom-3 left-3 right-3 text-left">
                 <div className="flex items-center space-x-1.5 text-[11px] text-[#8B5CF6] font-bold">
                   <Heart className="w-3 h-3 fill-[#8B5CF6]" />
                   <span>{item.likes}</span>
-                </div>
-                <div className="text-[#E5E2E1] font-bold text-xs line-clamp-1">
-                  {item.title}
                 </div>
               </div>
             </a>
