@@ -1,6 +1,7 @@
-import React from 'react';
-import { motion } from 'motion/react';
-import { Instagram, ArrowUpRight, Heart, Sparkles } from 'lucide-react';
+import React, { useState } from 'react';
+import { createPortal } from 'react-dom';
+import { motion, AnimatePresence } from 'motion/react';
+import { Instagram, ArrowUpRight, Heart, X, ZoomIn } from 'lucide-react';
 
 import feedImg1 from '../assets/images/regenerated_image_1787064432160.jpg';
 import feedImg2 from '../assets/images/regenerated_image_1787064416778.jpg';
@@ -12,6 +13,8 @@ import feedImg7 from '../assets/images/regenerated_image_1787064429189.jpg';
 import feedImg8 from '../assets/images/regenerated_image_1787064430748.jpg';
 
 export const InstagramSection: React.FC = () => {
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
   const feedItems = [
     {
       id: 1,
@@ -95,12 +98,11 @@ export const InstagramSection: React.FC = () => {
       <div className="w-full overflow-hidden py-2">
         <div className="animate-marquee flex gap-4 sm:gap-5">
           {marqueeList.map((item, idx) => (
-            <a
+            <button
               key={idx}
-              href="https://www.instagram.com/baz_ith_m2/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-52 sm:w-60 h-64 sm:h-72 flex-shrink-0 glass-panel rounded-2xl overflow-hidden relative group border border-[#2a2d37] hover:border-[#8B5CF6]/50 transition-all duration-300 block hover:-translate-y-1.5 shadow-lg"
+              type="button"
+              onClick={() => setSelectedImage(item.image)}
+              className="w-52 sm:w-60 h-64 sm:h-72 flex-shrink-0 glass-panel rounded-2xl overflow-hidden relative group border border-[#2a2d37] hover:border-[#8B5CF6]/60 transition-all duration-300 block hover:-translate-y-1.5 shadow-lg text-left cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#8B5CF6]/50"
             >
               <img
                 src={item.image}
@@ -110,16 +112,84 @@ export const InstagramSection: React.FC = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#131417]/95 via-[#131417]/30 to-transparent opacity-80 group-hover:opacity-95 transition-opacity" />
 
+              {/* Hover Zoom Indicator */}
+              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                <div className="w-10 h-10 rounded-full bg-black/60 backdrop-blur-md border border-white/20 flex items-center justify-center text-white shadow-xl transform scale-75 group-hover:scale-100 transition-transform duration-300">
+                  <ZoomIn className="w-5 h-5 text-[#A78BFA]" />
+                </div>
+              </div>
+
               <div className="absolute bottom-3 left-3 right-3 text-left">
                 <div className="flex items-center space-x-1.5 text-[11px] text-[#8B5CF6] font-bold">
                   <Heart className="w-3 h-3 fill-[#8B5CF6]" />
                   <span>{item.likes}</span>
                 </div>
               </div>
-            </a>
+            </button>
           ))}
         </div>
       </div>
+
+      {/* Image Popup Lightbox Modal rendered via Portal to escape stacking contexts */}
+      {typeof document !== 'undefined' &&
+        createPortal(
+          <AnimatePresence>
+            {selectedImage && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.25 }}
+                onClick={() => setSelectedImage(null)}
+                data-lenis-prevent
+                className="fixed inset-0 z-[999999] flex items-center justify-center p-3 sm:p-6 md:p-10 bg-black/90 backdrop-blur-xl cursor-pointer"
+              >
+                <motion.div
+                  initial={{ scale: 0.9, opacity: 0, y: 20 }}
+                  animate={{ scale: 1, opacity: 1, y: 0 }}
+                  exit={{ scale: 0.9, opacity: 0, y: 20 }}
+                  transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+                  onClick={(e) => e.stopPropagation()}
+                  className="relative max-w-4xl max-h-[92vh] w-full flex flex-col items-center cursor-default z-[1000000]"
+                >
+                  {/* Top Bar with Instagram link and Close button */}
+                  <div className="w-full flex items-center justify-between pb-3 px-1">
+                    <a
+                      href="https://www.instagram.com/baz_ith_m2/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center space-x-2 text-xs font-semibold text-[#CBC3D7] hover:text-white transition-colors bg-white/10 hover:bg-white/15 px-3.5 py-1.5 rounded-full backdrop-blur-md border border-white/10 shadow-lg"
+                    >
+                      <Instagram className="w-3.5 h-3.5 text-[#A78BFA]" />
+                      <span>@baz_ith_m2</span>
+                      <ArrowUpRight className="w-3 h-3 text-[#A78BFA]" />
+                    </a>
+
+                    <button
+                      type="button"
+                      onClick={() => setSelectedImage(null)}
+                      className="w-10 h-10 rounded-full bg-white/15 hover:bg-white/25 text-white flex items-center justify-center transition-all cursor-pointer backdrop-blur-md border border-white/30 hover:scale-105 active:scale-95 shadow-2xl"
+                      aria-label="Close image popup"
+                    >
+                      <X className="w-5 h-5" />
+                    </button>
+                  </div>
+
+                  {/* Popup Image Box */}
+                  <div className="relative overflow-hidden rounded-2xl border border-white/20 shadow-[0_25px_60px_rgba(0,0,0,0.85)] bg-[#131417] max-h-[82vh] flex items-center justify-center">
+                    <img
+                      src={selectedImage}
+                      alt="Portfolio Social Feed Highlight"
+                      referrerPolicy="no-referrer"
+                      className="w-auto h-auto max-h-[82vh] max-w-full object-contain rounded-2xl"
+                    />
+                  </div>
+                </motion.div>
+              </motion.div>
+            )}
+          </AnimatePresence>,
+          document.body
+        )}
     </section>
   );
 };
