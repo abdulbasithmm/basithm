@@ -23,7 +23,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         initial={{ opacity: 0, y: -15 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-        onClick={() => smoothScrollTo('#store', { offset: -30 })}
+        onClick={() => smoothScrollTo('#contact', { offset: -30 })}
         className="inline-flex items-center gap-2.5 px-3 py-1.5 rounded-full bg-[#1c1e26]/90 hover:bg-[#252833] border border-[#2d303d] hover:border-[#38BDF8]/40 transition-all duration-300 shadow-[0_0_20px_rgba(2,132,199,0.15)] cursor-pointer group mb-6 sm:mb-8 z-10"
       >
         <span className="px-2.5 py-0.5 rounded-full bg-[#2563EB] text-white text-[10px] sm:text-[11px] font-bold tracking-wide shadow-sm">

@@ -20,11 +20,11 @@ interface HeaderNavProps {
   onOpenStartProject: () => void;
   onOpenWork: () => void;
   onOpenServices: () => void;
-  onOpenStore: () => void;
+  onOpenStore?: () => void;
   onOpenTestimonials: () => void;
   onOpenAbout: () => void;
   onOpenFollow?: () => void;
-  cartCount: number;
+  cartCount?: number;
 }
 
 export const HeaderNav: React.FC<HeaderNavProps> = ({
@@ -35,7 +35,7 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({
   onOpenTestimonials,
   onOpenAbout,
   onOpenFollow,
-  cartCount,
+  cartCount = 0,
 }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -53,7 +53,7 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({
       }
 
       // Detect active section based on scroll offset
-      const sections = ['about', 'services', 'work', 'testimonials', 'follow', 'store', 'contact'];
+      const sections = ['about', 'services', 'work', 'testimonials', 'follow', 'contact'];
       const scrollPos = window.scrollY + 200;
 
       for (let i = sections.length - 1; i >= 0; i--) {
@@ -99,7 +99,6 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({
     { id: 'work', label: 'Works', icon: Briefcase, action: onOpenWork },
     { id: 'testimonials', label: 'Clients', icon: Users, action: onOpenTestimonials },
     { id: 'follow', label: 'Follow', icon: Share2, action: onOpenFollow || (() => {}) },
-    { id: 'store', label: 'Store', icon: ShoppingBag, isPro: true, action: onOpenStore },
   ];
 
   return (
@@ -111,11 +110,11 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({
             animate={{ y: 0, opacity: 1, x: '-50%' }}
             exit={{ y: -80, opacity: 0, x: '-50%' }}
             transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed top-3 sm:top-4 left-1/2 z-50 w-[94%] sm:w-[90%] max-w-[1040px] px-3.5 sm:px-6 py-2.5 sm:py-3.5 rounded-full border border-[#2a2d37] bg-[#15171c]/95 backdrop-blur-2xl shadow-[0_20px_50px_rgba(0,0,0,0.7)]"
+            className="fixed top-3 sm:top-4 left-1/2 z-50 w-[92%] sm:w-[84%] lg:w-auto min-w-[300px] lg:max-w-[660px] px-3 sm:px-4 py-2 sm:py-2.5 rounded-full border border-[#2a2d37] bg-[#15171c]/95 backdrop-blur-2xl shadow-[0_20px_45px_rgba(0,0,0,0.65)]"
           >
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between gap-3 sm:gap-6">
               {/* Brand logo */}
-              <div className="flex items-center space-x-2 sm:space-x-3">
+              <div className="flex items-center pl-1">
                 <a
                   href="#"
                   onClick={(e) => {
@@ -123,7 +122,7 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({
                     setMobileMenuOpen(false);
                     smoothScrollTo(0, { duration: 1.2 });
                   }}
-                  className="font-brand text-lg sm:text-xl lg:text-2xl font-black tracking-wider text-[#E5E2E1] hover:text-[#8B5CF6] transition-colors flex items-center gap-1"
+                  className="font-brand text-base sm:text-lg font-black tracking-wider text-[#E5E2E1] hover:text-[#8B5CF6] transition-colors flex items-center gap-0.5"
                 >
                   <span>BASITH</span>
                   <span className="text-[#8B5CF6]">.</span>
@@ -131,52 +130,31 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({
               </div>
 
               {/* Desktop Center navigation links */}
-              <nav className="hidden lg:flex items-center space-x-1 text-xs font-medium text-[#CBC3D7]">
+              <nav className="hidden lg:flex items-center space-x-0.5 text-xs font-medium text-[#CBC3D7]">
                 {navItems.map((item) => {
                   const isActive = activeSection === item.id;
                   return (
                     <button
                       key={item.id}
                       onClick={() => scrollToSection(item.id, item.action)}
-                      className={`px-3 py-1.5 rounded-full transition-all cursor-pointer flex items-center space-x-1.5 ${
+                      className={`px-2.5 py-1 rounded-full transition-all cursor-pointer flex items-center space-x-1 ${
                         isActive
-                          ? 'bg-[#8B5CF6]/20 text-white font-semibold border border-[#8B5CF6]/40 shadow-[0_0_12px_rgba(139,92,246,0.2)]'
+                          ? 'bg-[#8B5CF6]/20 text-white font-semibold border border-[#8B5CF6]/40 shadow-[0_0_10px_rgba(139,92,246,0.2)]'
                           : 'hover:text-white hover:bg-[#252731]'
                       }`}
                     >
                       <span>{item.label}</span>
-                      {item.isPro && (
-                        <span className="px-1.5 py-0.2 rounded-full bg-[#8B5CF6] text-[9px] text-white font-bold">
-                          PRO
-                        </span>
-                      )}
                     </button>
                   );
                 })}
               </nav>
 
               {/* Right controls */}
-              <div className="flex items-center space-x-2 sm:space-x-2.5">
-                {/* Cart button */}
-                <button
-                  onClick={() => {
-                    setMobileMenuOpen(false);
-                    onOpenStore();
-                  }}
-                  className="relative flex items-center space-x-1.5 px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-full bg-[#191b20] hover:bg-[#252731] border border-[#2a2d37] text-xs font-medium text-[#E5E2E1] transition-all cursor-pointer"
-                  title="Digital Store Cart"
-                >
-                  <ShoppingBag className="w-3.5 h-3.5 text-[#8B5CF6]" />
-                  <span className="hidden sm:inline text-xs">Store</span>
-                  <span className="w-4 h-4 rounded-full bg-[#8B5CF6] text-[10px] font-bold flex items-center justify-center text-white">
-                    {cartCount}
-                  </span>
-                </button>
-
+              <div className="flex items-center space-x-2">
                 {/* Start Project / Contact button */}
                 <button
                   onClick={() => scrollToSection('contact', onOpenStartProject)}
-                  className="flex items-center space-x-1.5 sm:space-x-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-[#8B5CF6] hover:bg-[#7c4dff] text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-white transition-all cursor-pointer shadow-[0_0_20px_rgba(139,92,246,0.35)] active:scale-95"
+                  className="flex items-center space-x-1.5 px-3 py-1.5 rounded-full bg-[#8B5CF6] hover:bg-[#7c4dff] text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-white transition-all cursor-pointer shadow-[0_0_16px_rgba(139,92,246,0.35)] active:scale-95"
                 >
                   <span className="hidden min-[380px]:inline">Contact</span>
                   <span className="inline min-[380px]:hidden">Hire</span>
@@ -186,13 +164,13 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({
                 {/* Mobile / Tablet Menu Toggle Button */}
                 <button
                   onClick={() => setMobileMenuOpen((prev) => !prev)}
-                  className="lg:hidden flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#191b20] border border-[#2a2d37] text-[#E5E2E1] hover:text-white hover:border-[#8B5CF6]/50 transition-all cursor-pointer focus:outline-none"
+                  className="lg:hidden flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#191b20] border border-[#2a2d37] text-[#E5E2E1] hover:text-white hover:border-[#8B5CF6]/50 transition-all cursor-pointer focus:outline-none"
                   aria-label="Toggle navigation menu"
                 >
                   {mobileMenuOpen ? (
-                    <X className="w-4 h-4 sm:w-5 sm:h-5 text-[#8B5CF6]" />
+                    <X className="w-4 h-4 text-[#8B5CF6]" />
                   ) : (
-                    <Menu className="w-4 h-4 sm:w-5 sm:h-5 text-[#CBC3D7]" />
+                    <Menu className="w-4 h-4 text-[#CBC3D7]" />
                   )}
                 </button>
               </div>
@@ -220,7 +198,7 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -20, scale: 0.95 }}
               transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-              className="fixed top-16 sm:top-20 left-1/2 -translate-x-1/2 z-50 w-[94%] sm:w-[88%] max-w-[500px] rounded-[28px] bg-[#15171c]/98 backdrop-blur-2xl border border-[#2a2d37] p-5 shadow-[0_25px_60px_rgba(0,0,0,0.8)] lg:hidden"
+              className="fixed top-16 sm:top-18 left-1/2 -translate-x-1/2 z-50 w-[90%] sm:w-[80%] max-w-[420px] rounded-[24px] bg-[#15171c]/98 backdrop-blur-2xl border border-[#2a2d37] p-4 sm:p-5 shadow-[0_25px_60px_rgba(0,0,0,0.8)] lg:hidden"
             >
               <div className="flex items-center justify-between pb-3 mb-3 border-b border-[#2a2d37]/80 px-2">
                 <span className="text-xs font-bold uppercase tracking-wider text-[#958EA0]">
@@ -257,11 +235,6 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({
                           <Icon className="w-4 h-4" />
                         </div>
                         <span>{item.label}</span>
-                        {item.isPro && (
-                          <span className="px-1.5 py-0.5 rounded-full bg-[#8B5CF6] text-[9px] text-white font-bold">
-                            PRO
-                          </span>
-                        )}
                       </div>
                       <ChevronRight
                         className={`w-4 h-4 transition-transform ${

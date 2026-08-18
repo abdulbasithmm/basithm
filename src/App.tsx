@@ -8,9 +8,7 @@ import { ServicesSection } from './components/ServicesSection';
 import { WorkSection } from './components/WorkSection';
 import { TestimonialsSection } from './components/TestimonialsSection';
 import { FollowSection } from './components/FollowSection';
-import { StoreSection } from './components/StoreSection';
 import { InstagramSection } from './components/InstagramSection';
-import { FaqSection } from './components/FaqSection';
 import { ContactSection } from './components/ContactSection';
 import { ModalState, StoreItem } from './types';
 import { MessageCircle } from 'lucide-react';
@@ -104,7 +102,6 @@ export default function App() {
         onOpenStore={handleOpenStore}
         onOpenTestimonials={handleOpenTestimonials}
         onOpenAbout={handleOpenAbout}
-        cartCount={cart.length}
       />
 
       {/* Hero Section */}
@@ -130,16 +127,7 @@ export default function App() {
 
       <FollowSection />
 
-      <StoreSection
-        cart={cart}
-        onAddToCart={handleAddToCart}
-        onRemoveFromCart={handleRemoveFromCart}
-        onOpenStoreModal={handleOpenStore}
-      />
-
       <InstagramSection />
-
-      <FaqSection />
 
       <ContactSection />
 
