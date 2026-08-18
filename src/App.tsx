@@ -7,7 +7,6 @@ import { AboutSection } from './components/AboutSection';
 import { ServicesSection } from './components/ServicesSection';
 import { WorkSection } from './components/WorkSection';
 import { TestimonialsSection } from './components/TestimonialsSection';
-import { FollowSection } from './components/FollowSection';
 import { InstagramSection } from './components/InstagramSection';
 import { ContactSection } from './components/ContactSection';
 import { ModalState, StoreItem } from './types';
@@ -124,8 +123,6 @@ export default function App() {
       />
 
       <TestimonialsSection />
-
-      <FollowSection />
 
       <InstagramSection />
 

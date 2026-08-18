@@ -23,7 +23,6 @@ interface HeaderNavProps {
   onOpenStore?: () => void;
   onOpenTestimonials: () => void;
   onOpenAbout: () => void;
-  onOpenFollow?: () => void;
   cartCount?: number;
 }
 
@@ -34,7 +33,6 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({
   onOpenStore,
   onOpenTestimonials,
   onOpenAbout,
-  onOpenFollow,
   cartCount = 0,
 }) => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -53,7 +51,7 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({
       }
 
       // Detect active section based on scroll offset
-      const sections = ['about', 'services', 'work', 'testimonials', 'follow', 'contact'];
+      const sections = ['about', 'services', 'work', 'testimonials', 'contact'];
       const scrollPos = window.scrollY + 200;
 
       for (let i = sections.length - 1; i >= 0; i--) {
@@ -98,7 +96,6 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({
     { id: 'services', label: 'Services', icon: Layers, action: onOpenServices },
     { id: 'work', label: 'Works', icon: Briefcase, action: onOpenWork },
     { id: 'testimonials', label: 'Clients', icon: Users, action: onOpenTestimonials },
-    { id: 'follow', label: 'Follow', icon: Share2, action: onOpenFollow || (() => {}) },
   ];
 
   return (
