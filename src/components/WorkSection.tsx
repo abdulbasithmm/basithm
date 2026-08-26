@@ -13,11 +13,7 @@ import {
 } from 'lucide-react';
 import { basithProjects } from '../data';
 
-interface WorkSectionProps {
-  onOpenWorkModal: () => void;
-}
-
-export const WorkSection: React.FC<WorkSectionProps> = ({ onOpenWorkModal }) => {
+export const WorkSection: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   // Mouse position state normalized between -1 and 1
@@ -125,14 +121,14 @@ export const WorkSection: React.FC<WorkSectionProps> = ({ onOpenWorkModal }) => 
 
         {/* Download for Free Pill CTA */}
         <div className="pt-3">
-          <motion.button
+          <motion.a
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            onClick={onOpenWorkModal}
+            href="#contact"
             className="px-6 py-2.5 rounded-full bg-[#111318] hover:bg-[#1a1d26] border border-[#2e3242] text-white font-medium text-xs sm:text-sm tracking-wide transition-all shadow-[0_10px_25px_rgba(0,0,0,0.5)] cursor-pointer inline-flex items-center space-x-2"
           >
-            <span>Download for Free</span>
-          </motion.button>
+            <span>Explore Creations</span>
+          </motion.a>
         </div>
       </motion.div>
 
@@ -179,7 +175,6 @@ export const WorkSection: React.FC<WorkSectionProps> = ({ onOpenWorkModal }) => 
                 springY={springY}
                 onSelect={() => {
                   setActiveIndex(idx);
-                  onOpenWorkModal();
                 }}
               />
             );

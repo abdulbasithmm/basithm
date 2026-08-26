@@ -18,10 +18,11 @@ import {
 } from 'lucide-react';
 import { personalBio } from '../data';
 import portraitImg from '../assets/images/hero_portrait_suit_1785661247796.jpg';
+import { smoothScrollTo } from '../utils/lenis';
 
 interface AboutSectionProps {
   onOpenContact: () => void;
-  onOpenWork: () => void;
+  onOpenWork?: () => void;
 }
 
 // 8-point decorative starburst icon from reference
@@ -131,7 +132,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
       color: 'hover:text-[#8B5CF6] hover:bg-[#8B5CF6]/10',
       onClick: (e: React.MouseEvent) => {
         e.preventDefault();
-        onOpenWork();
+        smoothScrollTo('#work', { offset: -30, duration: 1.1 });
       }
     },
     {

@@ -5,7 +5,6 @@ import {
   CheckCircle2,
   Sparkles,
   Trophy,
-  Layers,
   ShoppingBag,
   MessageCircle,
   Video,
@@ -24,7 +23,6 @@ import { ModalState, StoreItem } from '../types';
 import {
   personalBio,
   basithServices,
-  basithProjects,
   clientStories,
   storeProducts,
   recognitionData
@@ -46,7 +44,6 @@ export const InteractiveModal: React.FC<InteractiveModalProps> = ({
   onRemoveFromCart,
 }) => {
   const [projectSubmitted, setProjectSubmitted] = useState(false);
-  const [workFilter, setWorkFilter] = useState<'all' | 'motion' | 'video' | 'design'>('all');
   const [addedItemIds, setAddedItemIds] = useState<Record<string, boolean>>({});
 
   const [formData, setFormData] = useState({
@@ -72,11 +69,6 @@ export const InteractiveModal: React.FC<InteractiveModalProps> = ({
       setAddedItemIds((prev) => ({ ...prev, [item.id]: false }));
     }, 2000);
   };
-
-  const filteredProjects = basithProjects.filter((p) => {
-    if (workFilter === 'all') return true;
-    return p.type === workFilter;
-  });
 
   const cartTotal = cart.reduce((acc, curr) => acc + curr.priceNum, 0);
 
@@ -251,96 +243,6 @@ export const InteractiveModal: React.FC<InteractiveModalProps> = ({
                   </button>
                 </div>
               )}
-            </div>
-          )}
-
-          {/* ================= PORTFOLIO WORK ================= */}
-          {modalState.type === 'work' && (
-            <div>
-              <div className="flex items-center space-x-2 text-[#8B5CF6] text-xs font-semibold tracking-widest uppercase mb-2">
-                <Layers className="w-4 h-4" />
-                <span>Curated Showcase</span>
-              </div>
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
-                <h2 className="font-heading font-extrabold text-3xl sm:text-4xl text-[#E5E2E1]">
-                  Motion & Visual Design
-                </h2>
-
-                {/* Filter buttons */}
-                <div className="flex items-center space-x-1 p-1 rounded-xl bg-[#1d1f27] border border-[#2e313d]">
-                  <button
-                    onClick={() => setWorkFilter('all')}
-                    className={`px-3 py-1 rounded-lg text-xs font-medium transition-colors ${
-                      workFilter === 'all' ? 'bg-[#8B5CF6] text-white' : 'text-[#CBC3D7] hover:text-white'
-                    }`}
-                  >
-                    All
-                  </button>
-                  <button
-                    onClick={() => setWorkFilter('motion')}
-                    className={`px-3 py-1 rounded-lg text-xs font-medium transition-colors ${
-                      workFilter === 'motion' ? 'bg-[#8B5CF6] text-white' : 'text-[#CBC3D7] hover:text-white'
-                    }`}
-                  >
-                    Motion
-                  </button>
-                  <button
-                    onClick={() => setWorkFilter('video')}
-                    className={`px-3 py-1 rounded-lg text-xs font-medium transition-colors ${
-                      workFilter === 'video' ? 'bg-[#8B5CF6] text-white' : 'text-[#CBC3D7] hover:text-white'
-                    }`}
-                  >
-                    Video
-                  </button>
-                  <button
-                    onClick={() => setWorkFilter('design')}
-                    className={`px-3 py-1 rounded-lg text-xs font-medium transition-colors ${
-                      workFilter === 'design' ? 'bg-[#8B5CF6] text-white' : 'text-[#CBC3D7] hover:text-white'
-                    }`}
-                  >
-                    Graphic
-                  </button>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                {filteredProjects.map((item) => (
-                  <div
-                    key={item.id}
-                    className="glass-panel rounded-2xl overflow-hidden group hover:border-[#8B5CF6]/50 transition-all duration-300 flex flex-col justify-between border border-[#2a2d37]"
-                  >
-                    <div className="relative h-48 overflow-hidden bg-[#131417]">
-                      <img
-                        src={item.image}
-                        alt={item.title}
-                        referrerPolicy="no-referrer"
-                        className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#131417]/95 via-[#131417]/20 to-transparent opacity-80" />
-                      <div className="absolute top-3 left-3 px-3 py-1 rounded-full bg-[#8B5CF6] text-[10px] font-bold text-white uppercase tracking-wider">
-                        {item.category}
-                      </div>
-                    </div>
-                    <div className="p-5 flex-1 flex flex-col justify-between">
-                      <div>
-                        <h4 className="font-heading font-bold text-[#E5E2E1] text-lg leading-snug mb-2">
-                          {item.title}
-                        </h4>
-                        <p className="text-[#958EA0] text-xs leading-relaxed mb-4">
-                          {item.description}
-                        </p>
-                      </div>
-                      <div className="pt-3 border-t border-[#282a33] flex items-center justify-between text-[11px] text-[#CBC3D7]">
-                        <span>{item.tools}</span>
-                        <span className="text-[#E5E2E1] font-medium flex items-center space-x-1">
-                          <span>View Project</span>
-                          <ArrowUpRight className="w-3 h-3 text-[#8B5CF6]" />
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
             </div>
           )}
 

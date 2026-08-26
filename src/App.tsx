@@ -118,9 +118,7 @@ export default function App() {
         onOpenContact={handleOpenStartProject}
       />
 
-      <WorkSection
-        onOpenWorkModal={handleOpenWork}
-      />
+      <WorkSection />
 
       <TestimonialsSection />
 
