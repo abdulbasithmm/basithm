@@ -163,33 +163,6 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onOpenContact 
               </motion.div>
             );
           })}
-
-          {/* Call-to-Action Card */}
-          <motion.div
-            whileHover={{ y: -6, scale: 1.02, transition: { duration: 0.25 } }}
-            onClick={onOpenContact}
-            className="rounded-[28px] bg-gradient-to-br from-[#1e1b2e] via-[#171822] to-[#121319] border border-[#8B5CF6]/40 hover:border-[#8B5CF6] p-6 sm:p-8 flex flex-col justify-between relative group overflow-hidden transition-all duration-300 shadow-xl cursor-pointer min-h-[320px]"
-          >
-            <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-[#8B5CF6]/20 blur-[60px] rounded-full pointer-events-none" />
-
-            <div>
-              <div className="w-12 h-12 rounded-2xl bg-[#8B5CF6]/20 border border-[#8B5CF6]/40 flex items-center justify-center text-[#8B5CF6] mb-6">
-                <Sparkles className="w-6 h-6 animate-pulse" />
-              </div>
-
-              <h3 className="font-heading font-bold text-2xl text-white tracking-tight mb-3 group-hover:text-[#8B5CF6] transition-colors">
-                Have a Custom Project?
-              </h3>
-              <p className="text-[#958EA0] text-xs sm:text-sm leading-relaxed mb-6">
-                Need tailored video editing, custom motion graphics, or a complete digital brand overhaul? Let's discuss your timeline & goals.
-              </p>
-            </div>
-
-            <div className="inline-flex items-center space-x-2 text-sm font-bold text-white bg-[#8B5CF6] hover:bg-[#7C3AED] px-5 py-3 rounded-full shadow-lg transition-all transform group-hover:scale-105">
-              <span>Start a Project</span>
-              <ArrowUpRight className="w-4 h-4" />
-            </div>
-          </motion.div>
         </div>
       </div>
     </section>
