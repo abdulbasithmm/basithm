@@ -42,10 +42,10 @@ export const WorkSection: React.FC = () => {
     mouseY.set(0);
   };
 
-  // 4 main projects matching the 4 cards in the image
+  // 4 main projects matching the 4 cards in the design
   const displayProjects = basithProjects.slice(0, 4);
 
-  // Card specific visual styling mimicking the credit cards in the image
+  // Card specific visual styling mimicking the fanned cards
   const cardDesigns = [
     {
       id: 0,
@@ -102,7 +102,7 @@ export const WorkSection: React.FC = () => {
       {/* Soft Ambient Background Glow */}
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] sm:w-[900px] h-[350px] bg-radial from-white/10 via-purple-500/5 to-transparent blur-[140px] rounded-full pointer-events-none -z-10" />
 
-      {/* Main Header Content matching exact typography & style */}
+      {/* Main Header Content */}
       <motion.div
         initial={{ opacity: 0, y: 25 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -119,7 +119,7 @@ export const WorkSection: React.FC = () => {
           Take control of your time, stay focused, and set benchmark with every motion produced.
         </p>
 
-        {/* Download for Free Pill CTA */}
+        {/* Explore Creations CTA Button */}
         <div className="pt-3">
           <motion.a
             whileHover={{ scale: 1.05 }}
@@ -142,8 +142,10 @@ export const WorkSection: React.FC = () => {
         {/* Navigation Arrows for Mobile/Keyboard access */}
         <div className="flex sm:hidden items-center justify-between w-full px-4 mb-4 z-30">
           <button
+            type="button"
             onClick={() => setActiveIndex((prev) => (prev - 1 + 4) % 4)}
             className="p-2 rounded-full bg-[#191b20] border border-[#2a2d37] text-white"
+            aria-label="Previous card"
           >
             <ChevronLeft className="w-4 h-4" />
           </button>
@@ -151,8 +153,10 @@ export const WorkSection: React.FC = () => {
             Project {activeIndex + 1} of 4
           </span>
           <button
+            type="button"
             onClick={() => setActiveIndex((prev) => (prev + 1) % 4)}
             className="p-2 rounded-full bg-[#191b20] border border-[#2a2d37] text-white"
+            aria-label="Next card"
           >
             <ChevronRight className="w-4 h-4" />
           </button>
@@ -190,7 +194,6 @@ export const WorkSection: React.FC = () => {
         transition={{ duration: 0.7, delay: 0.2 }}
         className="pt-4 text-center"
       >
-        {/* 5 Logoipsum Badges */}
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6 items-center justify-center max-w-4xl mx-auto opacity-75 hover:opacity-100 transition-opacity">
           {[
             { name: 'Logoipsum', icon: Circle },
@@ -221,8 +224,27 @@ export const WorkSection: React.FC = () => {
 // Subcomponent for individual card with full mouse curve reactive motion
 interface InteractiveCardProps {
   idx: number;
-  card: any;
-  project: any;
+  card: {
+    id: number;
+    bg: string;
+    pattern: string;
+    accentOrb: string;
+    accentStyle: string;
+    baseRotation: number;
+    baseX: number;
+    baseY: number;
+    chipColor: string;
+    cardNum: string;
+  };
+  project: {
+    id: string;
+    title: string;
+    category: string;
+    type: string;
+    description: string;
+    tools: string;
+    image: string;
+  };
   isSelected: boolean;
   springX: MotionValue<number>;
   springY: MotionValue<number>;
