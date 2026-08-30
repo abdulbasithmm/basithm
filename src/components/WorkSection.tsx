@@ -3,13 +3,13 @@ import { motion } from 'motion/react';
 import {
   ArrowUpRight,
   Cpu,
-  ShieldCheck,
-  Sparkles,
-  Globe,
-  Circle,
-  Box,
   ChevronLeft,
   ChevronRight,
+  Infinity as InfinityIcon,
+  Globe,
+  LayoutGrid,
+  Github,
+  Pin,
 } from 'lucide-react';
 import { basithProjects } from '../data';
 
@@ -166,11 +166,11 @@ export const WorkSection: React.FC<WorkSectionProps> = () => {
       >
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6 items-center justify-center max-w-4xl mx-auto opacity-75 hover:opacity-100 transition-opacity">
           {[
-            { name: 'Logoipsum', icon: Circle },
-            { name: 'Logoipsum', icon: Globe },
-            { name: 'Logoipsum', icon: Sparkles },
-            { name: 'Logoipsum', icon: Box },
-            { name: 'Logoipsum', icon: ShieldCheck },
+            { name: 'Meta', icon: InfinityIcon },
+            { name: 'Google', icon: Globe },
+            { name: 'Microsoft', icon: LayoutGrid },
+            { name: 'GitHub', icon: Github },
+            { name: 'Pinterest', icon: Pin },
           ].map((item, i) => {
             const IconComp = item.icon;
             return (
