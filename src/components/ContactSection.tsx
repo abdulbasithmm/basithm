@@ -8,8 +8,8 @@ export const ContactSection: React.FC = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    service: 'Motion Graphics',
-    budget: '$500 - $1,000',
+    subject: '',
+    phone: '',
     details: '',
   });
 
@@ -18,7 +18,7 @@ export const ContactSection: React.FC = () => {
     if (!formData.name || !formData.email) return;
 
     // Send direct WhatsApp query or toast
-    const whatsappText = `Hi Basith! My name is ${formData.name} (${formData.email}). I am interested in ${formData.service} with budget ${formData.budget}. Details: ${formData.details}`;
+    const whatsappText = `Hi Basith! My name is ${formData.name} (${formData.email}${formData.phone ? `, Phone: ${formData.phone}` : ''}). Subject: ${formData.subject || 'Project Inquiry'}. Details: ${formData.details}`;
     window.open(`https://wa.me/919496660968?text=${encodeURIComponent(whatsappText)}`, '_blank');
     
     setSubmitted(true);
@@ -154,7 +154,7 @@ export const ContactSection: React.FC = () => {
                     required
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    placeholder="e.g. Salman MP"
+                    placeholder="e.g. Abdul Basith MM"
                     className="w-full px-4 py-3 rounded-xl bg-[#15161b] border border-[#2e313d] text-[#E5E2E1] text-sm focus:border-[#8B5CF6] focus:outline-none transition-colors"
                   />
                 </div>
@@ -167,7 +167,7 @@ export const ContactSection: React.FC = () => {
                     required
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    placeholder="name@company.com"
+                    placeholder="e.g. basithmm08@gmail.com"
                     className="w-full px-4 py-3 rounded-xl bg-[#15161b] border border-[#2e313d] text-[#E5E2E1] text-sm focus:border-[#8B5CF6] focus:outline-none transition-colors"
                   />
                 </div>
@@ -176,33 +176,28 @@ export const ContactSection: React.FC = () => {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-xs uppercase font-bold text-[#958EA0] mb-2">
-                    Required Service
+                    Subject *
                   </label>
-                  <select
-                    value={formData.service}
-                    onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl bg-[#191b20] border border-[#2e313d] text-[#E5E2E1] text-sm focus:border-[#8B5CF6] focus:outline-none transition-colors"
-                  >
-                    <option value="Motion Graphics">Motion Graphics & Lyrical Video</option>
-                    <option value="Video Editing">Video Editing & Color Grading</option>
-                    <option value="Graphic Design">Graphic Design & Posters</option>
-                    <option value="Full Media Package">Full Event / Brand Package</option>
-                  </select>
+                  <input
+                    type="text"
+                    required
+                    value={formData.subject}
+                    onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                    placeholder="e.g. Motion Graphics & Video Editing"
+                    className="w-full px-4 py-3 rounded-xl bg-[#15161b] border border-[#2e313d] text-[#E5E2E1] text-sm focus:border-[#8B5CF6] focus:outline-none transition-colors"
+                  />
                 </div>
                 <div>
                   <label className="block text-xs uppercase font-bold text-[#958EA0] mb-2">
-                    Estimated Budget
+                    Phone Number
                   </label>
-                  <select
-                    value={formData.budget}
-                    onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl bg-[#191b20] border border-[#2e313d] text-[#E5E2E1] text-sm focus:border-[#8B5CF6] focus:outline-none transition-colors"
-                  >
-                    <option value="Under ₹10,000">Under ₹10,000</option>
-                    <option value="₹10,000 - ₹25,000">₹10,000 - ₹25,000</option>
-                    <option value="₹25,000 - ₹50,000">₹25,000 - ₹50,000</option>
-                    <option value="₹50,000+">₹50,000+</option>
-                  </select>
+                  <input
+                    type="tel"
+                    value={formData.phone}
+                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                    placeholder="e.g. +91 94966 60968"
+                    className="w-full px-4 py-3 rounded-xl bg-[#15161b] border border-[#2e313d] text-[#E5E2E1] text-sm focus:border-[#8B5CF6] focus:outline-none transition-colors"
+                  />
                 </div>
               </div>
 

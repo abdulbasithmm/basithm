@@ -1,131 +1,109 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
-import { Star, Sparkles } from 'lucide-react';
+import { Sparkles } from 'lucide-react';
 
 interface Testimonial {
   id: string;
   author: string;
   role: string;
   company: string;
-  avatar: string;
   quote: string;
   date: string;
-  rating: number;
 }
 
 const testimonialsRow1: Testimonial[] = [
   {
     id: 't1',
-    author: 'Carmen Waters',
+    author: 'Akhil Menon',
     role: 'Creative Director',
     company: 'Youflow Media',
-    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80',
     quote:
-      "Basith has totally changed the way we handle video edits and motion visuals. Everything just clicks now, and we've seen some awesome improvements in how efficiently we operate.",
+      "Basith has totally changed the way we handle video edits and motion visuals. Everything just clicks now, and we've seen awesome improvements in how efficiently we operate.",
     date: 'June 10, 2024',
-    rating: 5,
   },
   {
     id: 't2',
-    author: 'Liam Everhart',
+    author: 'Anoop Varghese',
     role: 'Co-Founder',
     company: 'Apex Digital',
-    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80',
     quote:
       "Working with Basith transformed our media campaign management completely. The visual style is intuitive, and we've noticed significant enhancements in our operational efficiency since we started.",
     date: 'June 12, 2024',
-    rating: 5,
   },
   {
     id: 't3',
-    author: 'Jonathan Reed',
+    author: 'Favas Rahman',
     role: 'Executive Producer',
     company: 'Pulse Studios',
-    avatar: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=150&auto=format&fit=crop&q=80',
     quote:
       'Delivered top-tier motion graphics and video editing that exceeded our highest expectations. Their attention to detail and visual timing is unmatched in the industry.',
     date: 'June 15, 2024',
-    rating: 5,
   },
   {
     id: 't1-dup',
-    author: 'Carmen Waters',
+    author: 'Akhil Menon',
     role: 'Creative Director',
     company: 'Youflow Media',
-    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80',
     quote:
-      "Basith has totally changed the way we handle video edits and motion visuals. Everything just clicks now, and we've seen some awesome improvements in how efficiently we operate.",
+      "Basith has totally changed the way we handle video edits and motion visuals. Everything just clicks now, and we've seen awesome improvements in how efficiently we operate.",
     date: 'June 10, 2024',
-    rating: 5,
   },
   {
     id: 't2-dup',
-    author: 'Liam Everhart',
+    author: 'Anoop Varghese',
     role: 'Co-Founder',
     company: 'Apex Digital',
-    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80',
     quote:
       "Working with Basith transformed our media campaign management completely. The visual style is intuitive, and we've noticed significant enhancements in our operational efficiency since we started.",
     date: 'June 12, 2024',
-    rating: 5,
   },
 ];
 
 const testimonialsRow2: Testimonial[] = [
   {
     id: 't4',
-    author: 'Carole Kiehn',
+    author: 'Sreelakshmi Nair',
     role: 'Head of Marketing',
-    company: 'Vibe Global',
-    avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&auto=format&fit=crop&q=80',
+    company: 'Vibe Media',
     quote:
-      'This team has completely transformed our brand workflows. The motion integration is seamless, with significant improvements in our operational efficiency and customer satisfaction.',
+      'This team has completely transformed our brand workflows. The motion integration is seamless, with significant improvements in our operational efficiency and audience engagement.',
     date: 'June 05, 2024',
-    rating: 5,
   },
   {
     id: 't5',
-    author: 'Yvonne Baumbach',
+    author: 'Vishnu Namboothiri',
     role: 'Product Lead',
     company: 'Horizon Records',
-    avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&auto=format&fit=crop&q=80',
     quote:
-      "The motion graphics platform has revolutionized our media processes. Everything flows seamlessly now, and we've experienced remarkable gains in operational efficiency.",
+      "The motion graphics and kinetic typography have revolutionized our media processes. Everything flows seamlessly now, and we've experienced remarkable gains in visual quality.",
     date: 'June 08, 2024',
-    rating: 5,
   },
   {
     id: 't6',
-    author: 'Colin Hamill',
+    author: 'Muhammed Shafi',
     role: 'Operations Lead',
     company: 'Nova Cinema',
-    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80',
     quote:
-      "Basith has streamlined every aspect of our video operations. The platform's speed and reliability give us the confidence to execute high-volume tasks without hesitation.",
+      "Basith has streamlined every aspect of our video operations. The speed, aesthetic sensibility, and reliability give us the confidence to execute high-volume projects without hesitation.",
     date: 'June 10, 2024',
-    rating: 5,
   },
   {
     id: 't4-dup',
-    author: 'Carole Kiehn',
+    author: 'Sreelakshmi Nair',
     role: 'Head of Marketing',
-    company: 'Vibe Global',
-    avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&auto=format&fit=crop&q=80',
+    company: 'Vibe Media',
     quote:
-      'This team has completely transformed our brand workflows. The motion integration is seamless, with significant improvements in our operational efficiency and customer satisfaction.',
+      'This team has completely transformed our brand workflows. The motion integration is seamless, with significant improvements in our operational efficiency and audience engagement.',
     date: 'June 05, 2024',
-    rating: 5,
   },
   {
     id: 't5-dup',
-    author: 'Yvonne Baumbach',
+    author: 'Vishnu Namboothiri',
     role: 'Product Lead',
     company: 'Horizon Records',
-    avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&auto=format&fit=crop&q=80',
     quote:
-      "The motion graphics platform has revolutionized our media processes. Everything flows seamlessly now, and we've experienced remarkable gains in operational efficiency.",
+      "The motion graphics and kinetic typography have revolutionized our media processes. Everything flows seamlessly now, and we've experienced remarkable gains in visual quality.",
     date: 'June 08, 2024',
-    rating: 5,
   },
 ];
 
@@ -236,27 +214,14 @@ const TestimonialCard: React.FC<{ item: Testimonial }> = ({ item }) => {
       transition={{ duration: 0.25 }}
       className="w-[300px] sm:w-[360px] md:w-[400px] shrink-0 p-6 rounded-3xl bg-[#15161c] border border-[#2a2d37] hover:border-[#8B5CF6]/60 shadow-[0_15px_40px_rgba(0,0,0,0.6)] hover:shadow-[0_20px_50px_rgba(139,92,246,0.2)] flex flex-col justify-between transition-all duration-300 relative group cursor-pointer"
     >
-      {/* Top Author Header: Avatar + Name + 5 Gold Stars */}
-      <div className="flex items-center space-x-3.5 mb-5">
-        <img
-          src={item.avatar}
-          alt={item.author}
-          referrerPolicy="no-referrer"
-          className="w-11 h-11 rounded-full object-cover border border-[#2a2d37] group-hover:border-[#8B5CF6]/50 transition-colors shadow-sm"
-        />
-        <div className="space-y-0.5">
-          <h3 className="font-heading font-extrabold text-[#E5E2E1] group-hover:text-white transition-colors text-sm sm:text-base leading-tight">
-            {item.author}
-          </h3>
-          <div className="flex items-center space-x-1">
-            {[...Array(item.rating)].map((_, i) => (
-              <Star
-                key={i}
-                className="w-3.5 h-3.5 fill-[#f59e0b] text-[#f59e0b]"
-              />
-            ))}
-          </div>
-        </div>
+      {/* Top Author Header: Name + Role/Company (clean, no avatar, no stars) */}
+      <div className="mb-4 pb-3 border-b border-[#282a33]/60">
+        <h3 className="font-heading font-extrabold text-[#E5E2E1] group-hover:text-white transition-colors text-sm sm:text-base leading-tight">
+          {item.author}
+        </h3>
+        <p className="text-[11px] sm:text-xs text-[#8E8799] font-medium mt-1">
+          {item.role}, <span className="text-[#8B5CF6] font-semibold">{item.company}</span>
+        </p>
       </div>
 
       {/* Quote Narrative Body */}

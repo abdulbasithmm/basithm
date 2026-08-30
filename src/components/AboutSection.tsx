@@ -202,10 +202,10 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
             <div className="pt-4 border-t border-[#282a33] flex flex-wrap items-center justify-between gap-3 mt-4">
               <div className="flex items-center gap-4 sm:gap-6 text-xs text-[#8E8799]">
                 <div>
-                  <span className="font-bold text-white text-sm sm:text-base">5+</span> Years Exp.
+                  <span className="font-bold text-white text-sm sm:text-base">0.5</span> Year Exp.
                 </div>
                 <div>
-                  <span className="font-bold text-white text-sm sm:text-base">150+</span> Projects
+                  <span className="font-bold text-white text-sm sm:text-base">50+</span> Projects
                 </div>
                 <div>
                   <span className="font-bold text-white text-sm sm:text-base">100%</span> Delivery

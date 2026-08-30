@@ -150,7 +150,7 @@ export const InteractiveModal: React.FC<InteractiveModalProps> = ({
                           required
                           value={formData.name}
                           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                          placeholder="e.g. Salman MP"
+                          placeholder="e.g. Abdul Basith MM"
                           className="w-full h-12 px-4 rounded-xl bg-[#1d1f27] border border-[#2e313d] text-[#E5E2E1] placeholder-[#958EA0]/50 focus:outline-none focus:border-[#8B5CF6] transition-colors text-sm"
                         />
                       </div>
@@ -163,7 +163,7 @@ export const InteractiveModal: React.FC<InteractiveModalProps> = ({
                           required
                           value={formData.email}
                           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                          placeholder="salman@digibayt.com"
+                          placeholder="e.g. basithmm08@gmail.com"
                           className="w-full h-12 px-4 rounded-xl bg-[#1d1f27] border border-[#2e313d] text-[#E5E2E1] placeholder-[#958EA0]/50 focus:outline-none focus:border-[#8B5CF6] transition-colors text-sm"
                         />
                       </div>
@@ -172,33 +172,28 @@ export const InteractiveModal: React.FC<InteractiveModalProps> = ({
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
                         <label className="block text-xs font-medium text-[#958EA0] uppercase tracking-wider mb-2">
-                          Project Service
+                          Subject *
                         </label>
-                        <select
+                        <input
+                          type="text"
+                          required
                           value={formData.scope}
                           onChange={(e) => setFormData({ ...formData, scope: e.target.value })}
-                          className="w-full h-12 px-4 rounded-xl bg-[#1d1f27] border border-[#2e313d] text-[#E5E2E1] focus:outline-none focus:border-[#8B5CF6] transition-colors text-sm"
-                        >
-                          <option>Motion Graphics & Lyrical Video</option>
-                          <option>Video Editing & Color Grading</option>
-                          <option>Graphic Design & Posters</option>
-                          <option>Full Brand System</option>
-                        </select>
+                          placeholder="e.g. Motion Graphics & Video Editing"
+                          className="w-full h-12 px-4 rounded-xl bg-[#1d1f27] border border-[#2e313d] text-[#E5E2E1] placeholder-[#958EA0]/50 focus:outline-none focus:border-[#8B5CF6] transition-colors text-sm"
+                        />
                       </div>
                       <div>
                         <label className="block text-xs font-medium text-[#958EA0] uppercase tracking-wider mb-2">
-                          Estimated Budget
+                          Phone Number
                         </label>
-                        <select
-                          value={formData.budget}
-                          onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
-                          className="w-full h-12 px-4 rounded-xl bg-[#1d1f27] border border-[#2e313d] text-[#E5E2E1] focus:outline-none focus:border-[#8B5CF6] transition-colors text-sm"
-                        >
-                          <option>₹10,000 - ₹25,000</option>
-                          <option>₹25,000 - ₹50,000</option>
-                          <option>₹50,000 - ₹100,000</option>
-                          <option>₹100,000+</option>
-                        </select>
+                        <input
+                          type="tel"
+                          value={formData.phone}
+                          onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                          placeholder="e.g. +91 94966 60968"
+                          className="w-full h-12 px-4 rounded-xl bg-[#1d1f27] border border-[#2e313d] text-[#E5E2E1] placeholder-[#958EA0]/50 focus:outline-none focus:border-[#8B5CF6] transition-colors text-sm"
+                        />
                       </div>
                     </div>
 
@@ -533,7 +528,7 @@ export const InteractiveModal: React.FC<InteractiveModalProps> = ({
           {modalState.type === 'testimonials' && (
             <div>
               <div className="flex items-center space-x-2 text-[#8B5CF6] text-xs font-semibold tracking-widest uppercase mb-2">
-                <Star className="w-4 h-4" />
+                <Sparkles className="w-4 h-4" />
                 <span>Endorsements</span>
               </div>
               <h2 className="font-heading font-extrabold text-3xl sm:text-4xl text-[#E5E2E1] mb-2">
@@ -553,17 +548,10 @@ export const InteractiveModal: React.FC<InteractiveModalProps> = ({
                       "{story.quote}"
                     </p>
 
-                    <div className="flex items-center space-x-3 pt-4 border-t border-[#282a33]">
-                      <div
-                        className={`w-10 h-10 rounded-full bg-gradient-to-tr ${story.avatarBg || 'from-[#8B5CF6] to-[#06B6D4]'} text-white font-bold text-sm flex items-center justify-center flex-shrink-0 shadow-md`}
-                      >
-                        {story.author.charAt(0)}
-                      </div>
-                      <div>
-                        <div className="text-[#E5E2E1] font-bold text-sm">{story.author}</div>
-                        <div className="text-[#958EA0] text-xs">
-                          {story.role}, <span className="text-[#E5E2E1]/80">{story.company}</span>
-                        </div>
+                    <div className="pt-4 border-t border-[#282a33]">
+                      <div className="text-[#E5E2E1] font-bold text-sm">{story.author}</div>
+                      <div className="text-[#958EA0] text-xs mt-0.5">
+                        {story.role}, <span className="text-[#8B5CF6] font-medium">{story.company}</span>
                       </div>
                     </div>
                   </div>
