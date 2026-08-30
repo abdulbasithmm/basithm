@@ -168,12 +168,8 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
           {/* Right Bio Card */}
           <div className="lg:col-span-7 rounded-[28px] bg-[#191b20] border border-[#2a2d37] p-6 sm:p-8 lg:p-9 shadow-[0_15px_35px_rgba(0,0,0,0.5)] flex flex-col justify-between relative group hover:border-[#38BDF8]/40 transition-all duration-300">
             <div className="space-y-3 sm:space-y-4">
-              <div className="flex items-start justify-between">
+              <div className="flex items-start">
                 <HangingStar />
-                <span className="text-[10px] sm:text-[11px] font-bold text-[#10B981] px-2.5 py-0.5 rounded-full bg-[#14151a] border border-[#10B981]/30 uppercase tracking-wider flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#10B981] animate-ping" />
-                  Available For Hire
-                </span>
               </div>
 
               <h3 className="font-heading font-black text-2xl sm:text-3xl lg:text-4xl text-white tracking-tight leading-none">
@@ -201,14 +197,6 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
                   <span className="font-bold text-white text-sm sm:text-base">100%</span> Delivery
                 </div>
               </div>
-
-              <button
-                onClick={onOpenContact}
-                className="px-4 py-2 rounded-full bg-[#22242c] hover:bg-[#38BDF8] text-white hover:text-[#030712] border border-[#2e313d] hover:border-[#38BDF8] text-xs font-semibold uppercase tracking-wider transition-all duration-300 flex items-center gap-1.5 cursor-pointer group/btn"
-              >
-                <span>Get In Touch</span>
-                <ArrowUpRight className="w-3.5 h-3.5 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
-              </button>
             </div>
           </div>
         </div>
