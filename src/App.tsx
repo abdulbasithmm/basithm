@@ -50,10 +50,6 @@ export default function App() {
     setModalState({ isOpen: true, type: 'work' });
   };
 
-  const handleOpenRecognition = () => {
-    setModalState({ isOpen: true, type: 'recognition' });
-  };
-
   const handleOpenAbout = () => {
     setModalState({ isOpen: true, type: 'about' });
   };
@@ -90,7 +86,7 @@ export default function App() {
       <div className="noise-overlay" />
       <div className="vignette-overlay" />
 
-      {/* Interactive Cursor Spotlight */}
+      {/* Interactive Cursor Spotlight (Suppressed over Work Section) */}
       <CustomCursor />
 
       {/* Header Navigation */}
@@ -104,9 +100,7 @@ export default function App() {
       />
 
       {/* Hero Section */}
-      <HeroSection
-        onGetStarted={handleOpenStartProject}
-      />
+      <HeroSection onGetStarted={handleOpenStartProject} />
 
       {/* Additional Detailed Sections Matching Hero Aesthetic */}
       <AboutSection
@@ -114,9 +108,7 @@ export default function App() {
         onOpenWork={handleOpenWork}
       />
 
-      <ServicesSection
-        onOpenContact={handleOpenStartProject}
-      />
+      <ServicesSection onOpenContact={handleOpenStartProject} />
 
       <WorkSection />
 

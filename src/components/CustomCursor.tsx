@@ -26,6 +26,7 @@ export const CustomCursor: React.FC = () => {
   const [mousePos, setMousePos] = useState({ x: -100, y: -100 });
   const [isHovered, setIsHovered] = useState(false);
   const [isMouseDown, setIsMouseDown] = useState(false);
+  const [isInsideWorkSection, setIsInsideWorkSection] = useState(false);
   const [showModeMenu, setShowModeMenu] = useState(false);
   const [particles, setParticles] = useState<Particle[]>([]);
   const [ripples, setRipples] = useState<ClickRipple[]>([]);
@@ -53,6 +54,11 @@ export const CustomCursor: React.FC = () => {
 
       // Interactive element detection
       const target = e.target as HTMLElement;
+      const inWork = Boolean(
+        target && (target.closest('#work') || target.closest('[data-no-custom-cursor="true"]'))
+      );
+      setIsInsideWorkSection(inWork);
+
       if (
         target &&
         (target.tagName === 'BUTTON' ||
@@ -135,6 +141,10 @@ export const CustomCursor: React.FC = () => {
     { id: 'particles', name: 'Sparkle Trail', icon: Sparkles, desc: 'Emits glowing motion spark particles' },
     { id: 'spotlight', name: 'Aperture Radar', icon: Eye, desc: 'Dark ambient spotlight aperture' },
   ];
+
+  if (isInsideWorkSection) {
+    return null;
+  }
 
   return (
     <>

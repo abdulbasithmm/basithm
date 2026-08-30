@@ -1,5 +1,5 @@
-import React, { useState, useRef } from 'react';
-import { motion, useMotionValue, useSpring, useTransform, MotionValue } from 'motion/react';
+import React, { useState } from 'react';
+import { motion } from 'motion/react';
 import {
   ArrowUpRight,
   Cpu,
@@ -13,39 +13,16 @@ import {
 } from 'lucide-react';
 import { basithProjects } from '../data';
 
-export const WorkSection: React.FC = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
+interface WorkSectionProps {}
 
-  // Mouse position state normalized between -1 and 1
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  // Smooth springs for fluid, physics-based movement
-  const springX = useSpring(mouseX, { stiffness: 120, damping: 20 });
-  const springY = useSpring(mouseY, { stiffness: 120, damping: 20 });
-
+export const WorkSection: React.FC<WorkSectionProps> = () => {
   // Active highlighted card index for click/swipe
   const [activeIndex, setActiveIndex] = useState(1);
-
-  // Handle Mouse movement across the card stage
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!containerRef.current) return;
-    const rect = containerRef.current.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width) * 2 - 1; // -1 to 1
-    const y = ((e.clientY - rect.top) / rect.height) * 2 - 1; // -1 to 1
-    mouseX.set(x);
-    mouseY.set(y);
-  };
-
-  const handleMouseLeave = () => {
-    mouseX.set(0);
-    mouseY.set(0);
-  };
 
   // 4 main projects matching the 4 cards in the design
   const displayProjects = basithProjects.slice(0, 4);
 
-  // Card specific visual styling mimicking the fanned cards
+  // Card specific visual styling with increased gap between cards
   const cardDesigns = [
     {
       id: 0,
@@ -53,9 +30,9 @@ export const WorkSection: React.FC = () => {
       pattern: 'bg-[radial-gradient(#3a3e52_1px,transparent_1px)] [background-size:10px_10px]',
       accentOrb: 'bg-gradient-to-tr from-[#ec4899] to-[#8b5cf6]',
       accentStyle: 'top-6 right-6 w-14 h-14 rounded-full blur-xs opacity-90 shadow-[0_0_25px_rgba(236,72,153,0.5)]',
-      baseRotation: -14,
-      baseX: -160,
-      baseY: 28,
+      baseRotation: -10,
+      baseX: -340,
+      baseY: 18,
       chipColor: 'from-[#d4af37] to-[#aa7c11]',
     },
     {
@@ -64,8 +41,8 @@ export const WorkSection: React.FC = () => {
       pattern: 'bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-cyan-400/20 via-purple-500/20 to-transparent',
       accentOrb: 'bg-gradient-to-r from-cyan-400 to-blue-600',
       accentStyle: 'bottom-8 left-6 w-24 h-12 rounded-full blur-sm opacity-80',
-      baseRotation: -5,
-      baseX: -50,
+      baseRotation: -3,
+      baseX: -115,
       baseY: 6,
       chipColor: 'from-[#e2e8f0] to-[#94a3b8]',
     },
@@ -75,8 +52,8 @@ export const WorkSection: React.FC = () => {
       pattern: 'border border-[#27272a]',
       accentOrb: 'bg-gradient-to-br from-[#06b6d4] via-[#3b82f6] to-[#1e1b4b]',
       accentStyle: 'bottom-10 left-1/2 -translate-x-1/2 w-16 h-16 rounded-full shadow-[0_0_35px_rgba(6,182,212,0.7)]',
-      baseRotation: 4,
-      baseX: 50,
+      baseRotation: 3,
+      baseX: 115,
       baseY: 6,
       chipColor: 'from-[#d4af37] to-[#85581A]',
     },
@@ -86,17 +63,21 @@ export const WorkSection: React.FC = () => {
       pattern: 'bg-[radial-gradient(circle_at_bottom_right,#ea580c_0%,transparent_60%)]',
       accentOrb: 'border-2 border-[#f97316]/50',
       accentStyle: 'bottom-4 right-4 w-28 h-28 rounded-full opacity-60',
-      baseRotation: 14,
-      baseX: 160,
-      baseY: 28,
+      baseRotation: 10,
+      baseX: 340,
+      baseY: 18,
       chipColor: 'from-[#cbd5e1] to-[#64748b]',
     },
   ];
 
   return (
-    <section id="work" className="relative z-10 w-full py-16 lg:py-24 px-4 sm:px-6 lg:px-8 max-w-[1280px] mx-auto overflow-hidden bg-transparent select-none">
+    <section
+      id="work"
+      data-no-custom-cursor="true"
+      className="relative z-10 w-full py-16 lg:py-24 px-4 sm:px-6 lg:px-8 max-w-[1360px] mx-auto overflow-hidden bg-transparent select-none"
+    >
       {/* Soft Ambient Background Glow */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] sm:w-[900px] h-[350px] bg-radial from-white/10 via-purple-500/5 to-transparent blur-[140px] rounded-full pointer-events-none -z-10" />
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] sm:w-[950px] h-[360px] bg-radial from-white/10 via-purple-500/5 to-transparent blur-[140px] rounded-full pointer-events-none -z-10" />
 
       {/* Main Header Content */}
       <motion.div
@@ -104,7 +85,7 @@ export const WorkSection: React.FC = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-        className="text-center max-w-3xl mx-auto mb-8 sm:mb-10 space-y-3"
+        className="text-center max-w-3xl mx-auto mb-8 sm:mb-12 space-y-3"
       >
         <h2 className="font-heading font-normal text-3xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-[1.15]">
           Climb Every Hour, Win <br className="hidden sm:inline" />
@@ -115,8 +96,8 @@ export const WorkSection: React.FC = () => {
           Take control of your time, stay focused, and set benchmark with every motion produced.
         </p>
 
-        {/* Explore Creations CTA Button */}
-        <div className="pt-3">
+        {/* Explore Creations Action Button */}
+        <div className="pt-3 flex items-center justify-center">
           <motion.a
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -128,13 +109,8 @@ export const WorkSection: React.FC = () => {
         </div>
       </motion.div>
 
-      {/* Interactive Fanned-Cards Container with Curve-Slide Mouse Animation */}
-      <div
-        ref={containerRef}
-        onMouseMove={handleMouseMove}
-        onMouseLeave={handleMouseLeave}
-        className="relative w-full max-w-5xl mx-auto pt-6 pb-14 sm:pb-20 flex flex-col items-center justify-center cursor-grab active:cursor-grabbing"
-      >
+      {/* Fanned-Cards Container with Increased Gap */}
+      <div className="relative w-full max-w-6xl mx-auto pt-6 pb-14 sm:pb-24 flex flex-col items-center justify-center">
         {/* Navigation Arrows for Mobile/Keyboard access */}
         <div className="flex sm:hidden items-center justify-between w-full px-4 mb-4 z-30">
           <button
@@ -159,7 +135,7 @@ export const WorkSection: React.FC = () => {
         </div>
 
         {/* 3D Arc Curved Slider Stage */}
-        <div className="relative w-full max-w-4xl h-[280px] sm:h-[350px] md:h-[380px] flex items-center justify-center perspective-[1200px]">
+        <div className="relative w-full max-w-6xl h-[310px] sm:h-[370px] md:h-[400px] flex items-center justify-center perspective-[1200px]">
           {displayProjects.map((project, idx) => {
             const card = cardDesigns[idx];
             const isSelected = activeIndex === idx;
@@ -171,8 +147,6 @@ export const WorkSection: React.FC = () => {
                 card={card}
                 project={project}
                 isSelected={isSelected}
-                springX={springX}
-                springY={springY}
                 onSelect={() => {
                   setActiveIndex(idx);
                 }}
@@ -217,7 +191,7 @@ export const WorkSection: React.FC = () => {
   );
 };
 
-// Subcomponent for individual card with full mouse curve reactive motion
+// Subcomponent for individual card
 interface InteractiveCardProps {
   idx: number;
   card: {
@@ -242,8 +216,6 @@ interface InteractiveCardProps {
     link?: string;
   };
   isSelected: boolean;
-  springX: MotionValue<number>;
-  springY: MotionValue<number>;
   onSelect: () => void;
 }
 
@@ -252,22 +224,12 @@ const InteractiveCard: React.FC<InteractiveCardProps> = ({
   card,
   project,
   isSelected,
-  springX,
-  springY,
   onSelect,
 }) => {
-  // Spread across center (-1.5, -0.5, 0.5, 1.5)
-  const curveFactor = idx - 1.5;
-
-  // Explicit type annotations inside useTransform to prevent TS arithmetic type errors
-  const dynamicX = useTransform(springX, (xVal: number) => card.baseX + xVal * 35 + curveFactor * xVal * 25);
-  const dynamicY = useTransform(springY, (yVal: number) => card.baseY + Math.abs(curveFactor) * 8 + yVal * 20);
-  const dynamicRotate = useTransform(springX, (xVal: number) => card.baseRotation + xVal * 12 + curveFactor * xVal * 4);
-  const dynamicScale = useTransform(springY, (yVal: number) => (isSelected ? 1.06 : 0.95 + yVal * 0.03));
-
   const handleCardClick = () => {
     if (project.link) {
-      window.open(project.link, '_blank', 'noopener,noreferrer');
+      window.location.href = project.link;
+      return;
     }
     onSelect();
   };
@@ -275,27 +237,33 @@ const InteractiveCard: React.FC<InteractiveCardProps> = ({
   return (
     <motion.div
       style={{
-        x: dynamicX,
-        y: dynamicY,
-        rotate: dynamicRotate,
-        scale: dynamicScale,
         zIndex: isSelected ? 40 : 10 + (idx === 1 || idx === 2 ? 10 : 0),
       }}
       initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1 }}
+      whileInView={{
+        opacity: 1,
+        x: card.baseX,
+        y: card.baseY,
+        rotate: card.baseRotation,
+        scale: isSelected ? 1.05 : 1,
+      }}
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay: idx * 0.08 }}
       whileHover={{
-        scale: 1.12,
+        scale: 1.08,
         rotate: 0,
-        y: -25,
+        y: card.baseY - 16,
         zIndex: 50,
-        transition: { duration: 0.3, ease: 'easeOut' },
+        transition: { duration: 0.25, ease: 'easeOut' },
       }}
       onClick={handleCardClick}
       className={`absolute w-[190px] sm:w-[240px] md:w-[270px] h-[250px] sm:h-[300px] md:h-[330px] rounded-2xl p-4 sm:p-5 cursor-pointer border shadow-[0_25px_60px_rgba(0,0,0,0.85)] flex flex-col justify-between overflow-hidden transition-colors duration-300 ${
         card.bg
-      } ${isSelected ? 'border-[#8B5CF6] shadow-[0_0_40px_rgba(139,92,246,0.4)]' : 'border-white/10 hover:border-white/30'}`}
+      } ${
+        isSelected
+          ? 'border-[#8B5CF6] shadow-[0_0_40px_rgba(139,92,246,0.4)]'
+          : 'border-white/10 hover:border-white/30'
+      }`}
     >
       {/* Pattern Overlay */}
       <div className={`absolute inset-0 pointer-events-none ${card.pattern}`} />
@@ -306,7 +274,9 @@ const InteractiveCard: React.FC<InteractiveCardProps> = ({
       {/* Top Header: Metallic Chip & Type */}
       <div className="relative z-10 flex items-center justify-between w-full">
         {/* Metallic Credit Card Chip Graphic */}
-        <div className={`w-9 h-7 rounded-md bg-gradient-to-br ${card.chipColor} p-1 flex items-center justify-center border border-white/20 shadow-xs`}>
+        <div
+          className={`w-9 h-7 rounded-md bg-gradient-to-br ${card.chipColor} p-1 flex items-center justify-center border border-white/20 shadow-xs`}
+        >
           <Cpu className="w-4 h-4 text-black/80" />
         </div>
         <span className="text-[10px] font-mono text-white/60 tracking-widest uppercase">
@@ -329,20 +299,18 @@ const InteractiveCard: React.FC<InteractiveCardProps> = ({
 
       {/* Card Footer: Action Link */}
       <div className="relative z-10 pt-2 border-t border-white/10 flex items-center justify-end text-[10px] sm:text-xs font-mono tracking-wider">
-        <a
-          href={project.link || '#contact'}
-          target={project.link ? '_blank' : undefined}
-          rel={project.link ? 'noopener noreferrer' : undefined}
+        <div
           onClick={(e) => {
             if (project.link) {
               e.stopPropagation();
+              window.location.href = project.link;
             }
           }}
           className="text-white font-sans font-bold flex items-center gap-0.5 hover:text-[#38BDF8] transition-colors"
         >
           <span>Click</span>
           <ArrowUpRight className="w-3 h-3" />
-        </a>
+        </div>
       </div>
     </motion.div>
   );

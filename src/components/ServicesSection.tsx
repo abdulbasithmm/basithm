@@ -120,7 +120,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onOpenContact 
                 }}
                 onClick={() => {
                   if (service.link) {
-                    window.open(service.link, '_blank', 'noopener,noreferrer');
+                    window.location.href = service.link;
                   } else {
                     onOpenContact();
                   }
