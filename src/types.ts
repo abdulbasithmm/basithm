@@ -6,6 +6,7 @@ export interface WorkProject {
   image: string;
   type: 'video' | 'design' | 'motion';
   description?: string;
+  link?: string;
 }
 
 export interface ClientStory {
@@ -35,6 +36,7 @@ export interface ServiceItem {
   icon: string;
   description: string;
   features: string[];
+  link?: string;
 }
 
 export interface ModalState {

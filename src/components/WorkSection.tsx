@@ -236,9 +236,10 @@ interface InteractiveCardProps {
     title: string;
     category: string;
     type: string;
-    description: string;
+    description?: string;
     tools: string;
     image: string;
+    link?: string;
   };
   isSelected: boolean;
   springX: MotionValue<number>;
@@ -264,6 +265,13 @@ const InteractiveCard: React.FC<InteractiveCardProps> = ({
   const dynamicRotate = useTransform(springX, (xVal: number) => card.baseRotation + xVal * 12 + curveFactor * xVal * 4);
   const dynamicScale = useTransform(springY, (yVal: number) => (isSelected ? 1.06 : 0.95 + yVal * 0.03));
 
+  const handleCardClick = () => {
+    if (project.link) {
+      window.open(project.link, '_blank', 'noopener,noreferrer');
+    }
+    onSelect();
+  };
+
   return (
     <motion.div
       style={{
@@ -284,7 +292,7 @@ const InteractiveCard: React.FC<InteractiveCardProps> = ({
         zIndex: 50,
         transition: { duration: 0.3, ease: 'easeOut' },
       }}
-      onClick={onSelect}
+      onClick={handleCardClick}
       className={`absolute w-[190px] sm:w-[240px] md:w-[270px] h-[250px] sm:h-[300px] md:h-[330px] rounded-2xl p-4 sm:p-5 cursor-pointer border shadow-[0_25px_60px_rgba(0,0,0,0.85)] flex flex-col justify-between overflow-hidden transition-colors duration-300 ${
         card.bg
       } ${isSelected ? 'border-[#8B5CF6] shadow-[0_0_40px_rgba(139,92,246,0.4)]' : 'border-white/10 hover:border-white/30'}`}
@@ -321,10 +329,20 @@ const InteractiveCard: React.FC<InteractiveCardProps> = ({
 
       {/* Card Footer: Action Link */}
       <div className="relative z-10 pt-2 border-t border-white/10 flex items-center justify-end text-[10px] sm:text-xs font-mono tracking-wider">
-        <span className="text-white font-sans font-bold flex items-center gap-0.5 hover:text-[#38BDF8] transition-colors">
+        <a
+          href={project.link || '#contact'}
+          target={project.link ? '_blank' : undefined}
+          rel={project.link ? 'noopener noreferrer' : undefined}
+          onClick={(e) => {
+            if (project.link) {
+              e.stopPropagation();
+            }
+          }}
+          className="text-white font-sans font-bold flex items-center gap-0.5 hover:text-[#38BDF8] transition-colors"
+        >
           <span>Click</span>
           <ArrowUpRight className="w-3 h-3" />
-        </span>
+        </a>
       </div>
     </motion.div>
   );

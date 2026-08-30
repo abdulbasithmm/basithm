@@ -46,7 +46,8 @@ export const basithServices: ServiceItem[] = [
     title: 'Graphic Design',
     icon: 'palette',
     description: 'Striking visuals including branding, posters, and digital assets. Crafting unique identities for your vision.',
-    features: ['Social Media Posters', 'Printable Designs', 'Brand Identities']
+    features: ['Social Media Posters', 'Printable Designs', 'Brand Identities'],
+    link: 'https://basith-design-nu.vercel.app/'
   }
 ];
 
@@ -67,7 +68,8 @@ export const basithProjects: WorkProject[] = [
     tools: 'Photoshop • Brand Poster',
     type: 'design',
     image: 'https://lh3.googleusercontent.com/aida/AP1WRLuUuJPtokCze5p2EtO58SdJ_3v_lEqlvgjUAqrzf9iHRNWSFzgQdhdIXmYHJh8_8jYqnPozCDU2MPOeh2BB-2B3qAcfngkm1YTQ0TBeM3Q135mdxAp6pPLBpXO1Y-HHY-T__eCZm5ZLl-duoaoLRO9ygSE7zp4FikFXD_BklJILR-doBkaJ33W2oyL67AOxT_3FMhpoFqHsBAMnVO6TpinGas0AnlhluQsCPLzchSFarOaP33zfJI7LTXng',
-    description: 'Centennial commemorative graphic art poster celebrating a century of heritage and community impact.'
+    description: 'Centennial commemorative graphic art poster celebrating a century of heritage and community impact.',
+    link: 'https://basith-design-nu.vercel.app/'
   },
   {
     id: 'nooril-noorin',

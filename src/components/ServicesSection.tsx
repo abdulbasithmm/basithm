@@ -118,7 +118,13 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onOpenContact 
                   scale: 1.02,
                   transition: { duration: 0.25 },
                 }}
-                onClick={onOpenContact}
+                onClick={() => {
+                  if (service.link) {
+                    window.open(service.link, '_blank', 'noopener,noreferrer');
+                  } else {
+                    onOpenContact();
+                  }
+                }}
                 className={`rounded-[28px] bg-[#171822] border border-[#2a2d3c] ${accent.border} p-6 sm:p-8 flex flex-col justify-between relative group overflow-hidden transition-all duration-300 shadow-lg hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)] cursor-pointer min-h-[320px]`}
               >
                 {/* Background Glow */}
