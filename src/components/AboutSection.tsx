@@ -100,16 +100,6 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
       role: 'Bachelor’s Degree in Islamic Studies',
       institution: 'Darul Huda Islamic University',
     },
-    {
-      period: '2022 - 2023',
-      role: 'Mastering Motion Graphics & VFX',
-      institution: 'Adobe Certified & Masterclass',
-    },
-    {
-      period: '2023 - 2024',
-      role: 'Brand Strategy & Digital Visual Systems',
-      institution: 'Design & Visual Arts Specialization',
-    },
   ];
 
   const socialLinks = [

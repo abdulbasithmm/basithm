@@ -57,7 +57,6 @@ export const WorkSection: React.FC = () => {
       baseX: -160,
       baseY: 28,
       chipColor: 'from-[#d4af37] to-[#aa7c11]',
-      cardNum: '4920 •••• •••• 9102',
     },
     {
       id: 1,
@@ -69,7 +68,6 @@ export const WorkSection: React.FC = () => {
       baseX: -50,
       baseY: 6,
       chipColor: 'from-[#e2e8f0] to-[#94a3b8]',
-      cardNum: '1234 5678 9012 3456',
     },
     {
       id: 2,
@@ -81,7 +79,6 @@ export const WorkSection: React.FC = () => {
       baseX: 50,
       baseY: 6,
       chipColor: 'from-[#d4af37] to-[#85581A]',
-      cardNum: '8819 •••• •••• 1049',
     },
     {
       id: 3,
@@ -93,7 +90,6 @@ export const WorkSection: React.FC = () => {
       baseX: 160,
       baseY: 28,
       chipColor: 'from-[#cbd5e1] to-[#64748b]',
-      cardNum: '6021 •••• •••• 5530',
     },
   ];
 
@@ -234,7 +230,6 @@ interface InteractiveCardProps {
     baseX: number;
     baseY: number;
     chipColor: string;
-    cardNum: string;
   };
   project: {
     id: string;
@@ -324,11 +319,10 @@ const InteractiveCard: React.FC<InteractiveCardProps> = ({
         </p>
       </div>
 
-      {/* Card Footer: Card Number & Action Link */}
-      <div className="relative z-10 pt-2 border-t border-white/10 flex items-center justify-between text-[10px] sm:text-xs text-white/70 font-mono tracking-wider">
-        <span>{card.cardNum}</span>
+      {/* Card Footer: Action Link */}
+      <div className="relative z-10 pt-2 border-t border-white/10 flex items-center justify-end text-[10px] sm:text-xs font-mono tracking-wider">
         <span className="text-white font-sans font-bold flex items-center gap-0.5 hover:text-[#38BDF8] transition-colors">
-          <span>View</span>
+          <span>Click</span>
           <ArrowUpRight className="w-3 h-3" />
         </span>
       </div>

@@ -54,7 +54,7 @@ export const basithProjects: WorkProject[] = [
   {
     id: 'suhail-faizy',
     title: 'SUHAIL FAIZY KOORAD | MINHAJUL JANNA',
-    category: 'Lyrical Video',
+    category: 'UI Design',
     tools: 'After Effects • Motion Graphics',
     type: 'motion',
     image: 'https://lh3.googleusercontent.com/aida/AP1WRLuZViy7rEK7F_r6t-vPvoQx3b6g4y3gKQpeFtHi2JU4bJ98IeBFgSVGD1jQNyXPWnDmL9I0Sg-ofosOhAkGbDqUmdP5G7GoIW0lAj8zcVhqZXWUB8T8VMSo4ytG5wCipAZJsggZ6mtcOURuvOvREN-km_NAXNrn0CQpPXmPvlwJ5X_8fTQEo0DvcaqyFHMnCV3MFlTQZ6oRh70uf5ESVF_kWZBp87ybVAE0wcn0fZUhTi6osx4nliI-T885',
@@ -72,7 +72,7 @@ export const basithProjects: WorkProject[] = [
   {
     id: 'nooril-noorin',
     title: 'Nooril Noorin Nouka',
-    category: 'Motion Visuals',
+    category: 'Web Development',
     tools: 'Premiere Pro • Motion Design',
     type: 'video',
     image: 'https://lh3.googleusercontent.com/aida/AP1WRLsmLWR_UV6lipIx509gcgUwfBcP1NVLEUssckl9dtgHKZbRbxQDf6b-e5E-TOmexPc5klV73x7UFxuLvOyEyPv2f5dTztFjTiufuHE6vD_oCiuzr3t8SVPXuZpy0hk5VqCdFOioLmTqJsKTZWlisrczfUQilA7ALfQzo-4G4lQe_5BiNbduv6PUdcSyRPMLwOKPxFwZ_KPdu9nphbqYO8E99yvML4bTnFXkxDlWjMHNG9fqb9jedKC7WFQ',
@@ -81,7 +81,7 @@ export const basithProjects: WorkProject[] = [
   {
     id: 'arabic-lyric',
     title: 'Arabic Lyric Video',
-    category: 'Video Editing',
+    category: 'Motion & Video Editing',
     tools: 'After Effects • Calligraphy Animation',
     type: 'motion',
     image: 'https://lh3.googleusercontent.com/aida/AP1WRLuBMsnXE2rDPFW2vgqc4HSb5wmExMaz5aaiMFsYaQvOeRugnuyvUK6WBUmz7IcHpblBqAaedOyy9Q3lzGlkpYgUzTXC-rMywKZq3h6CdN5_t2-5lvaJX5IzcsNnV1j-bsCqdNnRY65-8GSVW8Mzg0p7TPrG5Q1Fo_qcFck15cilRKg9jMtzxG0mMi90RPjycWRfxd3yDOB6TUpyFKD86AwiZtIt4FME3_-o3GZ99DX2CGKykQcqtVzg1I5H',
